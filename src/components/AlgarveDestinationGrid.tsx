@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from './ui/enhanced-button';
 import { Card, CardContent } from './ui/card';
+import WishlistButton from './WishlistButton';
 import familyBeach from '@/assets/algarve-family-beach.jpg';
 import sunsetBeach from '@/assets/algarve-sunset-beach.jpg';
 import luxuryResort from '@/assets/algarve-luxury-resort.jpg';
@@ -128,8 +129,16 @@ const AlgarveDestinationGrid: React.FC = () => {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                  {destination.priceRange}
+                <div className="absolute top-4 right-4 flex gap-2">
+                  <WishlistButton 
+                    itemId={destination.id.toString()}
+                    itemTitle={destination.title}
+                    itemPrice={destination.priceRange}
+                    variant="icon"
+                  />
+                  <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                    {destination.priceRange}
+                  </div>
                 </div>
               </div>
               <CardContent className="p-6">

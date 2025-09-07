@@ -4,6 +4,13 @@ import AlgarveDestinationGrid from '@/components/AlgarveDestinationGrid';
 import AlgarveFAQ from '@/components/AlgarveFAQ';
 import { Card, CardContent } from '@/components/ui/card';
 import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
+import TrustSignals from '@/components/TrustSignals';
+import BookingWidget from '@/components/BookingWidget';
+import WeatherWidget from '@/components/WeatherWidget';
+import InteractiveMap from '@/components/InteractiveMap';
+import SocialProof from '@/components/SocialProof';
+import AIAssistant from '@/components/AIAssistant';
+import GamificationSystem from '@/components/GamificationSystem';
 
 const Index = () => {
   // Structured Data JSON-LD
@@ -107,6 +114,38 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Enhanced Features Grid */}
+        <div className="py-16 px-4 bg-muted/20">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Booking Widget */}
+            <BookingWidget destination="Algarve" priceFrom={199} discountPercent={45} />
+            
+            {/* Weather Widget */}
+            <WeatherWidget />
+            
+            {/* Gamification */}
+            <GamificationSystem />
+          </div>
+        </div>
+
+        {/* Interactive Map */}
+        <div className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                Ontdek de Mooiste Plekken van de Algarve
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Klik op een regio om specifieke deals en insider tips te ontdekken
+              </p>
+            </div>
+            <InteractiveMap />
+          </div>
+        </div>
+
+        {/* Social Proof Section */}
+        <SocialProof />
+
         {/* Main Content */}
         <main>
           <div id="destinations">
@@ -114,6 +153,10 @@ const Index = () => {
           </div>
           <AlgarveFAQ />
         </main>
+
+        {/* Trust Signals & AI Assistant */}
+        <TrustSignals />
+        <AIAssistant />
 
         {/* Footer */}
         <footer className="bg-foreground text-background py-12 px-4">

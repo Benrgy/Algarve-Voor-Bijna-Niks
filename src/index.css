@@ -50,8 +50,16 @@ All colors MUST be HSL.
     --shadow-warm: 0 10px 30px -10px hsl(35 85% 55% / 0.3);
     --shadow-soft: 0 4px 20px -4px hsl(210 15% 15% / 0.1);
 
-    /* Animation */
+    /* Advanced Animations & Effects */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-fast: all 0.15s ease-out;
+    
+    /* Trust Signals */
+    --gradient-success: linear-gradient(135deg, hsl(120 65% 55%), hsl(140 60% 60%));
+    --gradient-warning: linear-gradient(135deg, hsl(45 85% 60%), hsl(35 80% 65%));
+    --glow-primary: 0 0 20px hsl(35 85% 55% / 0.4);
+    --glow-success: 0 0 15px hsl(120 65% 55% / 0.3);
 
     --radius: 0.75rem;
 
