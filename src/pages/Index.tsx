@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/enhanced-button';
 import AlgarveDestinationGrid from '@/components/AlgarveDestinationGrid';
 import AlgarveFAQ from '@/components/AlgarveFAQ';
 import { Card, CardContent } from '@/components/ui/card';
+import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 
 const Index = () => {
   // Structured Data JSON-LD
@@ -43,28 +44,37 @@ const Index = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="relative bg-hero-gradient py-16 md:py-24 px-4 text-center overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="relative z-10 max-w-4xl mx-auto">
+        <header 
+          className="relative py-16 md:py-24 px-4 text-center overflow-hidden min-h-screen flex items-center"
+          style={{
+            backgroundImage: `url(${algarveHeroBeach})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
+          <div className="relative z-20 max-w-4xl mx-auto">
             <div className="mb-6">
-              <span className="inline-block bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <span className="inline-block bg-white/30 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-white/20">
                 ⭐ Al 10.000+ tevreden vakantiegangers gingen jou voor!
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Algarve voor <span className="text-yellow-300">Bijna Niks</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+              Algarve voor <span className="text-accent drop-shadow-lg">Bijna Niks</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed max-w-3xl mx-auto drop-shadow-md">
               Ontdek het geheim van goedkopere reizen naar Portugal's zonnigste kust. 
               Boek nu jouw Algarve-droomvakantie voor een fractie van de prijs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="cta" size="xl" asChild>
+              <Button variant="cta" size="xl" asChild className="backdrop-blur-sm">
                 <a href="#destinations" className="scroll-smooth">
                   Bekijk Beste Deals Nu 🌊
                 </a>
               </Button>
-              <p className="text-white/80 text-sm">
+              <p className="text-white/90 text-sm drop-shadow-md">
                 ⏰ Vandaag boeken = tot 70% korting
               </p>
             </div>
