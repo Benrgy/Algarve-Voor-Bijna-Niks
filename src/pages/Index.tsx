@@ -14,7 +14,8 @@ import GamificationSystem from '@/components/GamificationSystem';
 import LocalExperiences from '@/components/LocalExperiences';
 import CostCalculator from '@/components/CostCalculator';
 import ProfessionalTestimonials from '@/components/ProfessionalTestimonials';
-import UrgencyIndicators from '@/components/UrgencyIndicators';
+import AlgarveInsights from '@/components/AlgarveInsights';
+
 
 const Index = () => {
   // Structured Data JSON-LD
@@ -54,7 +55,7 @@ const Index = () => {
       />
       
       <div className="min-h-screen bg-background">
-        <UrgencyIndicators />
+        
         {/* Enhanced Hero Section */}
         <header 
           className="relative py-16 md:py-24 px-4 text-center overflow-hidden min-h-screen flex items-center"
@@ -79,8 +80,8 @@ const Index = () => {
                 <span className="inline-block bg-emerald-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
                   🏆 #1 Goedkoopste Algarve Deals
                 </span>
-                <span className="inline-block bg-orange-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
-                  ⚡ Laatste 24 uur: 847 boekingen
+                <span className="inline-block bg-blue-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
+                  🌊 Authentieke Lokale Ervaringen
                 </span>
               </div>
               <p className="text-white/90 text-sm font-medium">
@@ -126,8 +127,7 @@ const Index = () => {
             {/* Trust indicators */}
             <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Live: 234 mensen bekijken dit nu</span>
+                <span>🌟 Lokale Gidsen & Tips</span>
               </div>
               <div className="flex items-center gap-2">
                 <span>🔒 SSL Beveiligd</span>
@@ -196,6 +196,9 @@ const Index = () => {
 
         {/* Social Proof Section */}
         <SocialProof />
+
+        {/* Algarve Insights - fills empty space with valuable content */}
+        <AlgarveInsights />
 
         {/* Main Content */}
         <main>
