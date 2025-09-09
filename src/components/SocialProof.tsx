@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { Star, Quote, ThumbsUp, Globe } from 'lucide-react';
+import { Star, Quote, ThumbsUp, Globe, Users } from 'lucide-react';
 
 interface Review {
   id: string;
@@ -18,62 +18,66 @@ const SocialProof: React.FC = () => {
   const reviews: Review[] = [
     {
       id: '1',
-      name: 'Sandra & Mark',
-      location: 'Amsterdam',
+      name: 'Local Insights',
+      location: 'Tavira Insider',
       rating: 5,
-      text: 'Dankzij deze site hebben we €540 bespaard op onze familievakantie! De tips waren goud waard.',
-      trip: 'Familie vakantie Lagos',
-      savings: '€540 bespaard',
-      avatar: '👩‍👨‍👧‍👦'
+      text: 'Tavira heeft de mooiste kerk van de Algarve - Igreja do Carmo. Ga vroeg in de ochtend voor de beste foto\'s.',
+      trip: 'Culturele ontdekking',
+      savings: 'Gratis toegang tip',
+      avatar: '🏛️'
     },
     {
       id: '2',
-      name: 'Lisa M.',
-      location: 'Rotterdam',
+      name: 'Beach Expert',
+      location: 'Sagres Local',
       rating: 5,
-      text: 'Fantastische deals in Vilamoura gevonden. Het hotel was nog mooier dan op de foto\'s!',
-      trip: 'Romantisch weekend',
-      savings: '€280 bespaard',
-      avatar: '💑'
+      text: 'Praia do Beliche is het best bewaarde geheim. Fantastisch voor surfen en veel minder druk dan andere stranden.',
+      trip: 'Strand geheim',
+      savings: 'Parking tip included',
+      avatar: '🏄‍♂️'
     },
     {
       id: '3',
-      name: 'Familie Jansen',
-      location: 'Utrecht',
+      name: 'Food Guide',
+      location: 'Olhão Market',
       rating: 5,
-      text: 'Al 3 jaar onze Algarve vakanties via deze site. Altijd de beste prijzen en betrouwbaar.',
-      trip: 'Last minute Albufeira',
-      savings: '€420 bespaard',
-      avatar: '👨‍👩‍👧‍👦'
+      text: 'Voor de beste verse vis ga je naar Mercado de Olhão op zaterdag ochtend. Vraag naar de "catch of the day".',
+      trip: 'Kulinarische ontdekking',
+      savings: 'Local prices',
+      avatar: '🦐'
     },
     {
       id: '4',
-      name: 'Miguel & Ana',
-      location: 'Eindhoven',
+      name: 'Nature Lover',
+      location: 'Costa Vicentina',
       rating: 5,
-      text: 'De lokale tips waren fantastisch! We hebben echt authentiek Portugal ervaren.',
-      trip: 'Cultuur reis Tavira',
-      savings: '€180 bespaard',
-      avatar: '🧳'
+      text: 'De wandelroute Rota Vicentina biedt de mooiste kustlijn views. Start in Odeceixe voor de beste ervaring.',
+      trip: 'Natuur wandeling',
+      savings: 'Gratis natuurbeleving',
+      avatar: '🌿'
     }
   ];
 
   const stats = [
-    { label: 'Tevreden reizigers', value: '10.000+', icon: ThumbsUp },
-    { label: 'Gemiddelde besparing', value: '€385', icon: Star },
-    { label: 'Landen bereikt', value: '15+', icon: Globe },
-    { label: 'Reviews score', value: '4.8/5', icon: Star }
+    { label: 'Lokale tips verzameld', value: '100+', icon: ThumbsUp },
+    { label: 'Geheime locaties', value: '50+', icon: Star },
+    { label: 'Steden verkend', value: '25+', icon: Globe },
+    { label: 'Actuele informatie', value: '24/7', icon: Star }
   ];
 
   return (
     <section className="py-16 px-4 bg-gradient-to-br from-muted/30 to-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
+          <Badge variant="secondary" className="mb-4">
+            <Users className="w-4 h-4 mr-2" />
+            Lokale Kennis
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Wat Zeggen Onze Reizigers?
+            Echte Verhalen uit de Algarve
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Meer dan 10.000 Nederlanders gingen je voor en besparen gemiddeld €385 per vakantie
+            Ontdekkingen en ervaringen die laten zien hoe locals de Algarve beleven
           </p>
         </div>
 
@@ -143,19 +147,19 @@ const SocialProof: React.FC = () => {
           <div className="flex flex-wrap justify-center items-center gap-6 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span>SSL Beveiligd</span>
+              <span>Affiliate Transparantie</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span>ANVR Aangesloten</span>
+              <span>Lokale Expertise</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              <span>Gratis Annulering</span>
+              <span>Actuele Content</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-              <span>24/7 Support</span>
+              <span>Onafhankelijk Advies</span>
             </div>
           </div>
         </div>

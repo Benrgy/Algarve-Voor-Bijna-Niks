@@ -40,39 +40,39 @@ const TrustSignals: React.FC = () => {
   const currentTip = helpfulTips[currentBookingIndex];
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 space-y-3 max-w-sm">
-      {/* Helpful Travel Tip */}
-      {currentTip && (
-        <Card className="p-4 bg-background/95 backdrop-blur-sm border-l-4 border-l-primary shadow-warm animate-slide-up max-w-xs">
-          <div className="flex items-start gap-3">
-            <div className="text-2xl">{currentTip.icon}</div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-sm font-semibold text-foreground">Insider Tip</span>
-                <Badge variant="secondary" className="text-xs">
-                  {currentTip.category}
-                </Badge>
+      <div className="fixed bottom-4 left-4 z-50 space-y-3 max-w-sm">
+        {/* Helpful Travel Tip */}
+        {currentTip && (
+          <Card className="p-4 bg-background/95 backdrop-blur-sm border-l-4 border-l-primary shadow-warm animate-slide-up max-w-xs">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">{currentTip.icon}</div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-semibold text-foreground">Insider Tip</span>
+                  <Badge variant="secondary" className="text-xs">
+                    {currentTip.category}
+                  </Badge>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {currentTip.tip}
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {currentTip.tip}
-              </p>
             </div>
-          </div>
-        </Card>
-      )}
+          </Card>
+        )}
 
-      {/* Social Proof Badges */}
-      <div className="flex gap-2">
-        <Badge variant="outline" className="bg-background/95 backdrop-blur-sm">
-          <Star className="w-3 h-3 mr-1 text-yellow-500" />
-          4.8/5 ★★★★★
-        </Badge>
-        <Badge variant="outline" className="bg-background/95 backdrop-blur-sm">
-          <MapPin className="w-3 h-3 mr-1 text-primary" />
-          10.000+ tevreden
-        </Badge>
+        {/* Info Badges */}
+        <div className="flex gap-2">
+          <Badge variant="outline" className="bg-background/95 backdrop-blur-sm">
+            <Star className="w-3 h-3 mr-1 text-yellow-500" />
+            Lokale Tips
+          </Badge>
+          <Badge variant="outline" className="bg-background/95 backdrop-blur-sm">
+            <MapPin className="w-3 h-3 mr-1 text-primary" />
+            Insider Info
+          </Badge>
+        </div>
       </div>
-    </div>
   );
 };
 

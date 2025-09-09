@@ -115,15 +115,14 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <Button variant="cta" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
                 <a href="#destinations" className="scroll-smooth flex items-center gap-2">
-                  🎯 Ontdek Geheime Deals
-                  <span className="text-xs bg-red-500 px-2 py-1 rounded-full animate-pulse">HOT</span>
+                  🎯 Ontdek Beste Deals
                 </a>
               </Button>
               <div className="text-center">
                 <p className="text-white/95 text-sm drop-shadow-md font-semibold">
-                  ⏰ <span className="text-accent">Tijdelijke actie:</span> Tot 75% korting
+                  💡 <span className="text-accent">Insider Tips:</span> Bespaar honderden euro's
                 </p>
-                <p className="text-white/80 text-xs">Nog slechts 23 uur geldig</p>
+                <p className="text-white/80 text-xs">Met lokale kennis en slimme planning</p>
               </div>
             </div>
             
@@ -148,20 +147,20 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <Card className="border-0 shadow-soft">
                 <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-primary mb-2">10.000+</div>
-                  <p className="text-muted-foreground">Tevreden reizigers</p>
+                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                  <p className="text-muted-foreground">Insider locaties verzameld</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-soft">
                 <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-secondary mb-2">70%</div>
-                  <p className="text-muted-foreground">Gemiddelde besparing</p>
+                  <div className="text-3xl font-bold text-secondary mb-2">100%</div>
+                  <p className="text-muted-foreground">Lokale tips & gidsen</p>
                 </CardContent>
               </Card>
               <Card className="border-0 shadow-soft">
                 <CardContent className="p-6">
-                  <div className="text-3xl font-bold text-accent mb-2">4.8★</div>
-                  <p className="text-muted-foreground">Waardering bezoekers</p>
+                  <div className="text-3xl font-bold text-accent mb-2">24/7</div>
+                  <p className="text-muted-foreground">Actuele informatie</p>
                 </CardContent>
               </Card>
             </div>

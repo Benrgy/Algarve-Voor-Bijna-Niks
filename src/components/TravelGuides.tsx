@@ -257,23 +257,21 @@ const TravelGuides = () => {
         <div className="text-center mt-16">
           <Card className="max-w-2xl mx-auto border-0 shadow-soft bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Wekelijkse Insider Tips</h3>
+              <h3 className="text-2xl font-bold mb-4">Blijf op de Hoogte</h3>
               <p className="text-muted-foreground mb-6">
-                Ontvang elke week nieuwe geheime tips, last-minute deals en lokale insider informatie 
-                rechtstreeks in je inbox.
+                We verzamelen voortdurend nieuwe informatie over de Algarve. Bookmark deze pagina 
+                om de nieuwste insider tips en lokale ontdekkingen niet te missen.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input 
-                  type="email" 
-                  placeholder="je@email.com" 
-                  className="flex-1 px-4 py-2 rounded-md border border-input bg-background"
-                />
+                <Button variant="outline" className="hover:scale-105 transition-transform duration-200">
+                  🔖 Bookmark Deze Site
+                </Button>
                 <Button variant="cta" className="hover:scale-105 transition-transform duration-200">
-                  ✨ Meld me Aan
+                  📱 Deel met Vrienden
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground mt-3">
-                Geen spam, alleen waardevolle tips. Uitschrijven kan altijd.
+                Help anderen ook besparen op hun Algarve reis!
               </p>
             </CardContent>
           </Card>

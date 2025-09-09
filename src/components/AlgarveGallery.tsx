@@ -257,13 +257,13 @@ const AlgarveGallery = () => {
         <div className="text-center mt-12">
           <Card className="max-w-2xl mx-auto border-0 shadow-soft bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Persoonlijke Reisadvies Gewenst?</h3>
+              <h3 className="text-2xl font-bold mb-4">Zoek je Specifieke Informatie?</h3>
               <p className="text-muted-foreground mb-6">
-                Onze lokale experts helpen je de perfecte Algarve ervaring samen te stellen, 
-                afgestemd op jouw budget en voorkeuren.
+                Gebruik onze uitgebreide gidsen en lokale tips om de perfecte Algarve ervaring 
+                te plannen die bij jouw budget en voorkeuren past.
               </p>
               <Button variant="cta" size="lg" className="hover:scale-105 transition-transform duration-200">
-                🎯 Gratis Persoonlijk Advies
+                🎯 Bekijk Alle Gidsen
               </Button>
             </CardContent>
           </Card>

@@ -39,43 +39,43 @@ const GamificationSystem: React.FC = () => {
   const [achievements, setAchievements] = useState<Achievement[]>([
     {
       id: 'first-visit',
-      title: 'Welkom Explorer!',
-      description: 'Je eerste bezoek aan Algarve voor Bijna Niks',
+      title: 'Algarve Ontdekkingsreiziger!',
+      description: 'Je eerste stap naar een geweldige Algarve ervaring',
       icon: '🌊',
       unlocked: true,
       progress: 1,
       maxProgress: 1,
-      reward: '50 punten + welkomstkorting'
+      reward: 'Welkom! Ontdek alle insider tips'
     },
     {
       id: 'deal-hunter',
-      title: 'Deal Jager',
-      description: 'Bekijk 10 verschillende deals',
+      title: 'Slimme Reisplanner',
+      description: 'Bekijk verschillende reismogelijkheden',
       icon: '🎯',
       unlocked: false,
       progress: 0,
       maxProgress: 10,
-      reward: '€5 extra korting'
+      reward: 'Exclusieve lokale tips ontgrendeld'
     },
     {
       id: 'wishlist-master',
-      title: 'Verlanglijst Meester',
-      description: 'Voeg 5 items toe aan je verlanglijst',
+      title: 'Reis Verzamelaar', 
+      description: 'Bewaar je favoriete bestemmingen',
       icon: '💙',
       unlocked: false,
       progress: 0,
       maxProgress: 5,
-      reward: 'Exclusieve last-minute alerts'
+      reward: 'Persoonlijke reislijst aangemaakt'
     },
     {
       id: 'loyal-visitor',
-      title: 'Trouwe Bezoeker',
-      description: 'Bezoek de site 7 dagen achter elkaar',
+      title: 'Algarve Expert in Wording',
+      description: 'Regelmatige bezoeker van insider content',
       icon: '🔥',
       unlocked: false,
       progress: 1,
       maxProgress: 7,
-      reward: '10% loyaliteitskorting'
+      reward: 'Geavanceerde tips beschikbaar'
     }
   ]);
 
