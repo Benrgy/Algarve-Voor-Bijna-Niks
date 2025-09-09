@@ -15,6 +15,9 @@ import LocalExperiences from '@/components/LocalExperiences';
 import CostCalculator from '@/components/CostCalculator';
 import ProfessionalTestimonials from '@/components/ProfessionalTestimonials';
 import AlgarveInsights from '@/components/AlgarveInsights';
+import AlgarveGallery from '@/components/AlgarveGallery';
+import TravelGuides from '@/components/TravelGuides';
+import PremiumFeatures from '@/components/PremiumFeatures';
 
 
 const Index = () => {
@@ -193,6 +196,15 @@ const Index = () => {
             <InteractiveMap />
           </div>
         </div>
+
+        {/* Visual Gallery */}
+        <AlgarveGallery />
+
+        {/* Premium Features & Trip Planner */}
+        <PremiumFeatures />
+
+        {/* Travel Guides & Content */}
+        <TravelGuides />
 
         {/* Social Proof Section */}
         <SocialProof />
