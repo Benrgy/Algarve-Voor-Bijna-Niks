@@ -1,23 +1,13 @@
 import React from 'react';
 import { Button } from '@/components/ui/enhanced-button';
-import AlgarveDestinationGrid from '@/components/AlgarveDestinationGrid';
-import AlgarveFAQ from '@/components/AlgarveFAQ';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 import TrustSignals from '@/components/TrustSignals';
 import BookingWidget from '@/components/BookingWidget';
 import WeatherWidget from '@/components/WeatherWidget';
-import InteractiveMap from '@/components/InteractiveMap';
-import SocialProof from '@/components/SocialProof';
-import AIAssistant from '@/components/AIAssistant';
 import GamificationSystem from '@/components/GamificationSystem';
-import LocalExperiences from '@/components/LocalExperiences';
-import CostCalculator from '@/components/CostCalculator';
-import ProfessionalTestimonials from '@/components/ProfessionalTestimonials';
-import AlgarveInsights from '@/components/AlgarveInsights';
-import AlgarveGallery from '@/components/AlgarveGallery';
-import TravelGuides from '@/components/TravelGuides';
-import PremiumFeatures from '@/components/PremiumFeatures';
+import AIAssistant from '@/components/AIAssistant';
 
 
 const Index = () => {
@@ -113,17 +103,22 @@ const Index = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Button variant="cta" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
-                <a href="#destinations" className="scroll-smooth flex items-center gap-2">
+              <Link to="/deals">
+                <Button variant="cta" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
                   🎯 Ontdek Beste Deals
-                </a>
-              </Button>
-              <div className="text-center">
-                <p className="text-white/95 text-sm drop-shadow-md font-semibold">
-                  💡 <span className="text-accent">Insider Tips:</span> Bespaar honderden euro's
-                </p>
-                <p className="text-white/80 text-xs">Met lokale kennis en slimme planning</p>
-              </div>
+                </Button>
+              </Link>
+              <Link to="/bestemmingen">
+                <Button variant="secondary" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
+                  🏖️ Bekijk Bestemmingen
+                </Button>
+              </Link>
+            </div>
+            <div className="text-center mb-6">
+              <p className="text-white/95 text-sm drop-shadow-md font-semibold">
+                💡 <span className="text-accent">Insider Tips:</span> Bespaar honderden euro's
+              </p>
+              <p className="text-white/80 text-xs">Met lokale kennis en slimme planning</p>
             </div>
             
             {/* Trust indicators */}
@@ -181,46 +176,60 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Interactive Map */}
-        <div className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                Ontdek de Mooiste Plekken van de Algarve
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Klik op een regio om specifieke deals en insider tips te ontdekken
-              </p>
+        {/* Quick Navigation */}
+        <section className="py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              Ontdek de Algarve
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Link to="/bestemmingen" className="group">
+                <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-5xl mb-4">🏖️</div>
+                    <h3 className="text-2xl font-bold mb-4 text-primary">Bestemmingen</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Ontdek de mooiste stranden, steden en verborgen parels van de Algarve
+                    </p>
+                    <Button variant="outline" className="w-full">
+                      Verken Bestemmingen
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/deals" className="group">
+                <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-5xl mb-4">💰</div>
+                    <h3 className="text-2xl font-bold mb-4 text-secondary">Deals & Prijzen</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Vergelijk prijzen en vind de beste deals voor jouw droomvakantie
+                    </p>
+                    <Button variant="outline" className="w-full">
+                      Bekijk Deals
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link to="/gidsen" className="group">
+                <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-5xl mb-4">📖</div>
+                    <h3 className="text-2xl font-bold mb-4 text-accent">Reisgidsen</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Insider tips, lokale geheimen en praktische reisinformatie
+                    </p>
+                    <Button variant="outline" className="w-full">
+                      Lees Gidsen
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
-            <InteractiveMap />
           </div>
-        </div>
-
-        {/* Visual Gallery */}
-        <AlgarveGallery />
-
-        {/* Premium Features & Trip Planner */}
-        <PremiumFeatures />
-
-        {/* Travel Guides & Content */}
-        <TravelGuides />
-
-        {/* Social Proof Section */}
-        <SocialProof />
-
-        {/* Algarve Insights - fills empty space with valuable content */}
-        <AlgarveInsights />
-
-        {/* Main Content */}
-        <main>
-          <LocalExperiences />
-          <CostCalculator />
-          <div id="destinations">
-            <AlgarveDestinationGrid />
-          </div>
-          <ProfessionalTestimonials />
-          <AlgarveFAQ />
-        </main>
+        </section>
 
         {/* Trust Signals & AI Assistant */}
         <TrustSignals />
