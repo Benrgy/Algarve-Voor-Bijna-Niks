@@ -238,7 +238,7 @@ const Index = () => {
         {/* Footer */}
         <footer className="bg-foreground text-background py-12 px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
               <div>
                 <h3 className="text-xl font-bold mb-4">Algarve voor Bijna Niks</h3>
                 <p className="text-background/80 text-sm">
@@ -247,21 +247,29 @@ const Index = () => {
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-4">Populaire Bestemmingen</h4>
+                <h4 className="font-semibold mb-4">Ontdek</h4>
                 <ul className="space-y-2 text-sm text-background/80">
-                  <li><a href="#destinations" className="hover:text-primary transition-colors">Lagos</a></li>
-                  <li><a href="#destinations" className="hover:text-primary transition-colors">Portimão</a></li>
-                  <li><a href="#destinations" className="hover:text-primary transition-colors">Faro</a></li>
-                  <li><a href="#destinations" className="hover:text-primary transition-colors">Albufeira</a></li>
+                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">🏖️ Alle Bestemmingen</Link></li>
+                  <li><Link to="/deals" className="hover:text-primary transition-colors">💰 Beste Deals</Link></li>
+                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">📖 Reisgidsen</Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold mb-4">Reistips</h4>
+                <h4 className="font-semibold mb-4">Populaire Plekken</h4>
                 <ul className="space-y-2 text-sm text-background/80">
-                  <li><a href="#faq" className="hover:text-primary transition-colors">Budget Vakantie Tips</a></li>
-                  <li><a href="#faq" className="hover:text-primary transition-colors">Beste Reistijd</a></li>
-                  <li><a href="#faq" className="hover:text-primary transition-colors">Vliegticket Deals</a></li>
-                  <li><a href="#faq" className="hover:text-primary transition-colors">Last Minute Aanbiedingen</a></li>
+                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Lagos</Link></li>
+                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Portimão</Link></li>
+                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Faro</Link></li>
+                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Albufeira</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Hulp & Info</h4>
+                <ul className="space-y-2 text-sm text-background/80">
+                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">Budget Tips</Link></li>
+                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">Beste Reistijd</Link></li>
+                  <li><Link to="/deals" className="hover:text-primary transition-colors">Vliegtickets</Link></li>
+                  <li><Link to="/deals" className="hover:text-primary transition-colors">Last Minute</Link></li>
                 </ul>
               </div>
             </div>

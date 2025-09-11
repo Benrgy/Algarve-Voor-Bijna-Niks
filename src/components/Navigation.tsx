@@ -1,9 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 const Navigation = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { href: '/', label: 'Home', icon: '🏠' },
@@ -49,21 +54,54 @@ const Navigation = () => {
           </NavigationMenu>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center space-x-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                  location.pathname === item.href
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                )}
-              >
-                {item.icon}
-              </Link>
-            ))}
+          <div className="md:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="relative">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Menu openen</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium transition-colors",
+                        location.pathname === item.href
+                          ? "bg-primary text-primary-foreground"
+                          : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                      )}
+                    >
+                      <span className="text-xl">{item.icon}</span>
+                      {item.label}
+                    </Link>
+                  ))}
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <div className="text-sm text-muted-foreground mb-3">Snelle links</div>
+                    <div className="flex flex-col gap-2">
+                      <Link 
+                        to="/deals" 
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm text-primary hover:underline"
+                      >
+                        🎯 Beste Deals van Nu
+                      </Link>
+                      <Link 
+                        to="/gidsen" 
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm text-secondary hover:underline"
+                      >
+                        📖 Insider Tips & Gidsen
+                      </Link>
+                    </div>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
