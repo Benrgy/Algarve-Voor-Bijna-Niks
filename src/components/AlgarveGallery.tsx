@@ -1,275 +1,206 @@
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
-import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { ChevronRight, MapPin, Camera, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Camera, MapPin } from 'lucide-react';
 
-// Import images
-import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
-import algarveBeachResort from '@/assets/algarve-beach-resort.jpg';
-import algarveBoutiqueHotel from '@/assets/algarve-boutique-hotel.jpg';
-import algarveCoastalRoad from '@/assets/algarve-coastal-road.jpg';
-import algarveFamilyBeach from '@/assets/algarve-family-beach.jpg';
-import algarveLuxuryResort from '@/assets/algarve-luxury-resort.jpg';
-import algarveSunsetBeach from '@/assets/algarve-sunset-beach.jpg';
-import algarveVillaPool from '@/assets/algarve-villa-pool.jpg';
-import algarveLocalMarket from '@/assets/algarve-local-market.jpg';
-
-interface GalleryItem {
-  id: string;
-  title: string;
-  location: string;
-  image: string;
-  category: string;
-  description: string;
-  priceFrom: number;
-  rating: number;
-  insider: boolean;
-}
-
-const galleryItems: GalleryItem[] = [
+const galleryImages = [
   {
-    id: '1',
-    title: 'Verborgen Paradijs Strand',
-    location: 'Praia da Marinha',
-    image: algarveHeroBeach,
-    category: 'Stranden',
-    description: 'Een van Europa\'s mooiste stranden, alleen bekend bij locals',
-    priceFrom: 89,
-    rating: 4.9,
-    insider: true
+    id: 1,
+    src: '/src/assets/algarve-hero-beach.jpg',
+    title: 'Praia da Marinha',
+    location: 'Centraal Algarve',
+    description: 'Een van de mooiste stranden ter wereld volgens Michelin',
+    category: 'Stranden'
   },
   {
-    id: '2',
-    title: 'Authentiek Vissersdorp',
-    location: 'Ferragudo',
-    image: algarveBeachResort,
-    category: 'Cultuur',
-    description: 'Ontdek het echte Portugal in dit ongerepte vissersdorpje',
-    priceFrom: 125,
-    rating: 4.8,
-    insider: true
+    id: 2,
+    src: '/src/assets/algarve-sunset-beach.jpg', 
+    title: 'Ponta da Piedade',
+    location: 'Lagos, West Algarve',
+    description: 'Iconische rotsen en grotten bij zonsondergang',
+    category: 'Natuur'
   },
   {
-    id: '3',
-    title: 'Luxury Beach Resort',
-    location: 'Vale do Lobo',
-    image: algarveLuxuryResort,
-    category: 'Luxe',
-    description: 'Premium resort met exclusieve golf en spa faciliteiten',
-    priceFrom: 289,
-    rating: 4.7,
-    insider: false
+    id: 3,
+    src: '/src/assets/algarve-coastal-road.jpg',
+    title: 'Kustweg naar Sagres',
+    location: 'West Algarve',
+    description: 'Spectaculaire rit langs de wilde westkust',
+    category: 'Roadtrips'
   },
   {
-    id: '4',
-    title: 'Familiestrand Paradise',
-    location: 'Praia de Tavira',
-    image: algarveFamilyBeach,
-    category: 'Familie',
-    description: 'Perfect voor gezinnen met kinderen, veilig en schoon',
-    priceFrom: 67,
-    rating: 4.6,
-    insider: false
+    id: 4,
+    src: '/src/assets/algarve-local-market.jpg',
+    title: 'Loulé Markt',
+    location: 'Centraal Algarve', 
+    description: 'Authentieke zaterdagmarkt vol lokale producten',
+    category: 'Cultuur'
   },
   {
-    id: '5',
-    title: 'Kliffen Wandelroute',
-    location: 'Ponta da Piedade',
-    image: algarveCoastalRoad,
-    category: 'Natuur',
-    description: 'Spectaculaire wandeling langs dramatische kustlijnen',
-    priceFrom: 45,
-    rating: 4.9,
-    insider: true
+    id: 5,
+    src: '/src/assets/algarve-family-beach.jpg',
+    title: 'Praia da Falésia',
+    location: 'Albufeira',
+    description: 'Kilometerslang gouden zand, perfect voor families',
+    category: 'Stranden'
   },
   {
-    id: '6',
-    title: 'Lokale Food Market',
-    location: 'Mercado de Olhão',
-    image: algarveLocalMarket,
-    category: 'Cultuur',
-    description: 'Proef verse zeevruchten en lokale delicatessen',
-    priceFrom: 25,
-    rating: 4.8,
-    insider: true
-  },
-  {
-    id: '7',
-    title: 'Sunset Villa Retreat',
-    location: 'Sagres',
-    image: algarveVillaPool,
-    category: 'Accommodatie',
-    description: 'Privé villa met zwembad en adembenemende zonsondergangen',
-    priceFrom: 199,
-    rating: 4.9,
-    insider: false
-  },
-  {
-    id: '8',
-    title: 'Romantic Sunset Spot',
-    location: 'Cabo de São Vicente',
-    image: algarveSunsetBeach,
-    category: 'Romance',
-    description: 'De meest romantische plek voor zonsondergang in Europa',
-    priceFrom: 35,
-    rating: 4.8,
-    insider: true
+    id: 6,
+    src: '/src/assets/algarve-villa-pool.jpg',
+    title: 'Traditionale Villa',
+    location: 'Binnenland Algarve',
+    description: 'Authentiek verblijf tussen de citroen- en olijfbomen',
+    category: 'Accommodaties'
   }
 ];
 
-const categories = ['Alle', 'Stranden', 'Cultuur', 'Luxe', 'Familie', 'Natuur', 'Accommodatie', 'Romance'];
+const categories = ['Alle', 'Stranden', 'Natuur', 'Cultuur', 'Roadtrips', 'Accommodaties'];
 
 const AlgarveGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('Alle');
-  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const filteredItems = selectedCategory === 'Alle' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedCategory);
+  const filteredImages = selectedCategory === 'Alle' 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === selectedCategory);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % filteredImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
+  };
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">
-            <Camera className="w-4 h-4 mr-2" />
-            Exclusieve Algarve Galerij
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Ontdek Verborgen Parels
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Van geheime insider-locaties tot luxe bestemmingen - ontdek de Algarve zoals locals dat doen. 
-            Elke foto vertelt een verhaal van onvergetelijke momenten.
-          </p>
-        </div>
-
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Algarve Foto Galerij
+        </h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+          Laat je inspireren door de natuurlijke schoonheid en culturele rijkdom van de Algarve
+        </p>
+        
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2">
           {categories.map((category) => (
             <Button
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedCategory(category)}
-              className="transition-all duration-200 hover:scale-105"
+              onClick={() => {
+                setSelectedCategory(category);
+                setCurrentImageIndex(0);
+              }}
+              className="transition-all duration-200"
             >
               {category}
             </Button>
           ))}
         </div>
+      </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredItems.map((item) => (
-            <Dialog key={item.id}>
-              <DialogTrigger asChild>
-                <Card className="group cursor-pointer overflow-hidden border-0 shadow-soft hover:shadow-elegant transition-all duration-300 hover:scale-105">
-                  <div className="relative">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
-                    {/* Insider Badge */}
-                    {item.insider && (
-                      <Badge className="absolute top-3 left-3 bg-accent/90 text-white border-0">
-                        🔥 Insider Tip
-                      </Badge>
-                    )}
-
-                    {/* Rating */}
-                    <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs flex items-center">
-                      <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
-                      {item.rating}
-                    </div>
-
-                    {/* Bottom Info */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-                      <div className="flex items-center text-sm text-white/90 mb-2">
-                        <MapPin className="w-3 h-3 mr-1" />
-                        {item.location}
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-accent font-bold">vanaf €{item.priceFrom}</span>
-                        <ChevronRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </DialogTrigger>
+      {/* Main Gallery Display */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        
+        {/* Featured Large Image */}
+        <div className="lg:col-span-2">
+          <Card className="overflow-hidden border-0 shadow-elegant">
+            <div className="relative">
+              <div 
+                className="h-80 lg:h-96 bg-cover bg-center transition-all duration-500"
+                style={{ backgroundImage: `url(${filteredImages[currentImageIndex]?.src})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
-              <DialogContent className="max-w-4xl">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-80 object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <div>
-                      <Badge variant="outline" className="mb-2">{item.category}</Badge>
-                      <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                      <div className="flex items-center text-muted-foreground mb-4">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        {item.location}
-                      </div>
-                    </div>
-                    
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                    
-                    <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg">
-                      <div>
-                        <div className="text-2xl font-bold text-primary">vanaf €{item.priceFrom}</div>
-                        <div className="text-sm text-muted-foreground">per persoon</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="flex items-center text-sm">
-                          <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
-                          {item.rating} waardering
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-3">
-                      <Button variant="default" className="flex-1">
-                        Bekijk Aanbiedingen
-                      </Button>
-                      <Button variant="outline">
-                        Meer Info
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
 
-        {/* CTA Section */}
-        <div className="text-center mt-12">
-          <Card className="max-w-2xl mx-auto border-0 shadow-soft bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Zoek je Specifieke Informatie?</h3>
-              <p className="text-muted-foreground mb-6">
-                Gebruik onze uitgebreide gidsen en lokale tips om de perfecte Algarve ervaring 
-                te plannen die bij jouw budget en voorkeuren past.
-              </p>
-              <Button variant="cta" size="lg" className="hover:scale-105 transition-transform duration-200">
-                🎯 Bekijk Alle Gidsen
-              </Button>
-            </CardContent>
+              {/* Image Info Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <Camera className="w-4 h-4" />
+                  <span className="text-sm bg-primary/80 px-2 py-1 rounded-full">
+                    {filteredImages[currentImageIndex]?.category}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold mb-2">
+                  {filteredImages[currentImageIndex]?.title}
+                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm">{filteredImages[currentImageIndex]?.location}</span>
+                </div>
+                <p className="text-white/90 text-sm">
+                  {filteredImages[currentImageIndex]?.description}
+                </p>
+              </div>
+            </div>
           </Card>
         </div>
+
+        {/* Thumbnail Grid */}
+        <div className="space-y-4">
+          <h3 className="font-bold text-lg">Meer Foto's</h3>
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
+            {filteredImages.slice(1, 5).map((image, index) => (
+              <button
+                key={image.id}
+                onClick={() => setCurrentImageIndex(index + 1)}
+                className="group relative overflow-hidden rounded-lg aspect-[4/3] hover:scale-105 transition-transform duration-200"
+              >
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(${image.src})` }}
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-200" />
+                <div className="absolute bottom-2 left-2 right-2">
+                  <div className="text-white text-xs font-medium bg-black/50 rounded px-2 py-1">
+                    {image.title}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* Image Counter */}
+      <div className="text-center">
+        <div className="flex justify-center items-center gap-3 mb-4">
+          <span className="text-sm text-muted-foreground">
+            {currentImageIndex + 1} van {filteredImages.length}
+          </span>
+          <div className="flex gap-1">
+            {filteredImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentImageIndex ? 'bg-primary' : 'bg-muted'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        
+        <Button variant="outline" className="hover:scale-105 transition-transform">
+          🖼️ Bekijk Alle {galleryImages.length} Foto's
+        </Button>
+      </div>
+    </div>
   );
 };
 

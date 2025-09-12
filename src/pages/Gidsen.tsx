@@ -23,34 +23,34 @@ const Gidsen = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="bg-gradient-to-r from-secondary via-primary to-accent py-16 text-white">
+        <header className="bg-gradient-to-r from-secondary via-primary to-accent py-12 text-white">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6">
+            <h1 className="text-3xl md:text-5xl font-black mb-4">
               Algarve Reisgidsen
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
-              📖 Ontdek insider tips, lokale geheimen en praktische reisinformatie
+            <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-white/90">
+              📖 Insider tips van locals die de Algarve als hun broekzak kennen
             </p>
-            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-6 max-w-2xl mx-auto border border-white/20">
-              <p className="text-lg mb-4">
-                🎯 <strong>Geschreven door locals:</strong> Authentieke tips van mensen die er wonen
+            <div className="bg-black/20 backdrop-blur-md rounded-xl p-4 max-w-xl mx-auto border border-white/20">
+              <p className="text-sm mb-2">
+                🎯 <strong>Geschreven door locals</strong> - Bespaar honderden euro's
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex flex-wrap justify-center gap-3 text-xs">
                 <span>✅ Altijd actueel</span>
-                <span>✅ Insider informatie</span>
-                <span>✅ Praktische tips</span>
+                <span>✅ Getest door locals</span>
+                <span>✅ Gratis toegang</span>
               </div>
             </div>
           </div>
         </header>
 
         {/* Guide Categories */}
-        <section className="py-12 px-4">
+        <section className="py-8 px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Reisgids Categorieën
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              Kies je Interessegebied
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="border-0 shadow-soft hover:shadow-warm transition-shadow duration-300 cursor-pointer">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4">🏖️</div>
@@ -58,8 +58,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     De mooiste stranden, watersporten en verborgen baaien
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Strand Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -71,8 +75,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     Lokale restaurants, traditionele gerechten en wijnbars
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Food Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -84,8 +92,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     Musea, kastelen, kerken en archeologische sites
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Cultuur Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -97,8 +109,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     Wandelpaden, natuurparken en buitenactiviteiten
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Natuur Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -110,8 +126,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     Lokale markten, souvenirwinkels en outlets
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Shopping Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -123,8 +143,12 @@ const Gidsen = () => {
                   <p className="text-muted-foreground mb-4">
                     Bars, clubs, live muziek en gezellige terrassen
                   </p>
-                  <Button variant="outline" className="w-full">
-                    Bekijk Gids
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.scrollTo({ top: document.getElementById('travel-guides')?.offsetTop, behavior: 'smooth' })}
+                  >
+                    Bekijk Nachtleven Gidsen
                   </Button>
                 </CardContent>
               </Card>
@@ -133,7 +157,9 @@ const Gidsen = () => {
         </section>
 
         {/* Travel Guides Component */}
-        <TravelGuides />
+        <div id="travel-guides">
+          <TravelGuides />
+        </div>
 
         {/* Algarve Insights */}
         <AlgarveInsights />
@@ -147,10 +173,10 @@ const Gidsen = () => {
         </section>
 
         {/* Quick Tips */}
-        <section className="py-12 px-4">
+        <section className="py-8 px-4 bg-muted/10">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Snelle Tips voor je Algarve Trip
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              Expert Tips van Locals
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-0 shadow-soft">
