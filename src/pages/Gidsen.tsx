@@ -45,7 +45,7 @@ const Gidsen = () => {
         </header>
 
         {/* Guide Categories */}
-        <section className="py-16 px-4">
+        <section className="py-12 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Reisgids Categorieën
@@ -142,12 +142,12 @@ const Gidsen = () => {
         <ProfessionalTestimonials />
 
         {/* FAQ Section */}
-        <section id="faq" className="py-16 px-4 bg-muted/20">
+        <section id="faq" className="py-12 px-4 bg-muted/20">
           <AlgarveFAQ />
         </section>
 
         {/* Quick Tips */}
-        <section className="py-16 px-4">
+        <section className="py-12 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Snelle Tips voor je Algarve Trip

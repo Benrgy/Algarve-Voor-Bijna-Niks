@@ -77,7 +77,7 @@ const Deals = () => {
         </section>
 
         {/* Main Tools Grid */}
-        <section className="py-16 px-4">
+        <section className="py-12 px-4">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Booking Widget */}
             <div className="lg:col-span-1">
@@ -120,7 +120,7 @@ const Deals = () => {
         </section>
 
         {/* Cost Calculator */}
-        <section className="py-16 px-4 bg-muted/20">
+        <section className="py-12 px-4 bg-muted/20">
           <CostCalculator />
         </section>
 
@@ -128,7 +128,7 @@ const Deals = () => {
         <LocalExperiences />
 
         {/* Seasonal Deals */}
-        <section className="py-16 px-4">
+        <section className="py-12 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Seizoen Aanbiedingen

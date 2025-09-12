@@ -3,6 +3,7 @@ import AlgarveDestinationGrid from '@/components/AlgarveDestinationGrid';
 import InteractiveMap from '@/components/InteractiveMap';
 import AlgarveGallery from '@/components/AlgarveGallery';
 import { Card, CardContent } from '@/components/ui/card';
+import SectionNav from '@/components/SectionNav';
 
 const Bestemmingen = () => {
   const structuredData = {
@@ -55,10 +56,17 @@ const Bestemmingen = () => {
           </div>
         </header>
 
+        <SectionNav items={[
+          { href: '#kaart', label: 'Kaart' },
+          { href: '#galerij', label: 'Galerij' },
+          { href: '#bestemmingen', label: 'Bestemmingen' },
+          { href: '#regios', label: "Regio's" },
+        ]} />
+
         {/* Interactive Map */}
-        <section className="py-16 px-4">
+        <section id="kaart" className="py-12 px-4 scroll-mt-24">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                 Interactieve Algarve Kaart
               </h2>
@@ -71,17 +79,19 @@ const Bestemmingen = () => {
         </section>
 
         {/* Visual Gallery */}
-        <AlgarveGallery />
+        <section id="galerij" className="py-12 scroll-mt-24">
+          <AlgarveGallery />
+        </section>
 
         {/* Destination Grid */}
-        <section className="py-16 px-4 bg-muted/20" id="destinations">
+        <section id="bestemmingen" className="py-12 px-4 bg-muted/20 scroll-mt-24">
           <AlgarveDestinationGrid />
         </section>
 
         {/* Regional Information */}
-        <section className="py-16 px-4">
+        <section id="regios" className="py-12 px-4 scroll-mt-24">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
               Regio's van de Algarve
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
