@@ -15,6 +15,7 @@ const Navigation = () => {
     { href: '/bestemmingen', label: 'Bestemmingen', icon: '🏖️' },
     { href: '/deals', label: 'Deals & Prijzen', icon: '💰' },
     { href: '/gidsen', label: 'Reisgidsen', icon: '📖' },
+    { href: '/blog', label: 'Blog', icon: '✍️' },
   ];
 
   return (
