@@ -1,173 +1,187 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/enhanced-button';
-import { MapPin, Star, Camera, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { MapPin, Star, Users, ArrowRight, Sparkles } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const destinations = [
-  {
-    id: 1,
-    name: 'Lagos',
-    region: 'West Algarve',
-    description: 'Spectaculaire kliffen, grottentours en het beroemde Ponta da Piedade',
-    highlights: ['Praia Dona Ana', 'Ponta da Piedade', 'Historisch centrum'],
-    rating: 4.8,
-    visitors: '2.3M/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Avontuur & Natuur'
-  },
-  {
-    id: 2,
-    name: 'Albufeira',
-    region: 'Centraal Algarve',
-    description: 'Levendig nachtleven, gouden stranden en waterparken voor families',
-    highlights: ['Praia da Falésia', 'Strip nachtleven', 'Zoomarine'],
-    rating: 4.6,
-    visitors: '3.1M/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Nachtleven & Families'
-  },
-  {
-    id: 3,
-    name: 'Tavira',
-    region: 'Oost Algarve',
-    description: 'Authentiek vissersdorp met Romeinse brug en ongerepte stranden',
-    highlights: ['Tavira Island', 'Romeinse brug', 'Oude stad'],
-    rating: 4.7,
-    visitors: '890K/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Cultuur & Rust'
-  },
-  {
-    id: 4,
-    name: 'Sagres',
-    region: 'West Algarve',
-    description: 'Het einde van Europa met dramatische kliffen en surfersstrandjes',
-    highlights: ['Cabo São Vicente', 'Fortaleza', 'Surfen'],
-    rating: 4.5,
-    visitors: '650K/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Surfen & Natuur'
-  },
-  {
-    id: 5,
-    name: 'Vilamoura',
-    region: 'Centraal Algarve',
-    description: 'Luxe marina, golfbanen en exclusieve resorts',
-    highlights: ['Marina', 'Golfbanen', 'Falesia Beach'],
-    rating: 4.4,
-    visitors: '1.8M/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Luxe & Golf'
-  },
-  {
-    id: 6,
-    name: 'Faro',
-    region: 'Oost Algarve',
-    description: 'Hoofdstad met luchthaven, Ria Formosa natuurpark en historie',
-    highlights: ['Oude stad', 'Ria Formosa', 'Kathedraal'],
-    rating: 4.3,
-    visitors: '1.2M/jaar',
-    image: '/api/placeholder/300/200',
-    bestFor: 'Cultuur & Transit'
-  }
-];
+interface Destination {
+  id: string;
+  slug: string;
+  name: string;
+  region: string;
+  short_description?: string;
+  rating?: number;
+  visitor_count?: string;
+  hero_image?: string;
+  best_for?: string[];
+  highlights?: string[];
+}
 
 const AlgarveDestinationGrid = () => {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const { data } = await supabase
+        .from('destinations')
+        .select('*')
+        .eq('published', true)
+        .order('visitor_count', { ascending: false });
+
+      if (data) setDestinations(data);
+      setLoading(false);
+    };
+
+    fetchDestinations();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-8">
+          <Skeleton className="h-12 w-64 mx-auto mb-4" />
+          <Skeleton className="h-6 w-96 mx-auto" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <Skeleton key={i} className="h-96" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  const regionStats = {
+    'West Algarve': destinations.filter(d => d.region === 'West Algarve').length,
+    'Central Algarve': destinations.filter(d => d.region === 'Central Algarve').length,
+    'East Algarve': destinations.filter(d => d.region === 'East Algarve').length,
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-8">
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span className="text-sm font-semibold text-primary">Ontdek de Algarve</span>
+        </div>
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Top Bestemmingen</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Van levendige kustplaatjes tot authentieke dorpjes - ontdek wat elke bestemming uniek maakt
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          Van levendige kustplaatjes tot authentieke dorpjes - klik op een bestemming voor uitgebreide gidsen, insider tips en expert adviezen
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {destinations.map((destination) => (
-          <Card key={destination.id} className="group overflow-hidden border-0 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-105">
-            <div className="relative">
-              <div 
-                className="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                style={{ backgroundImage: `url(${destination.image})` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
-              {/* Rating Badge */}
-              <div className="absolute top-3 right-3 bg-white/90 rounded-full px-3 py-1 flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <span className="text-sm font-bold">{destination.rating}</span>
+          <Link 
+            key={destination.id} 
+            to={`/bestemmingen/${destination.slug}`}
+            className="group"
+          >
+            <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-full">
+              <div className="relative h-56">
+                {destination.hero_image ? (
+                  <img
+                    src={destination.hero_image}
+                    alt={destination.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                {destination.rating && (
+                  <Badge className="absolute top-4 right-4 bg-white/95 text-foreground hover:bg-white">
+                    <Star className="w-3 h-3 text-yellow-500 fill-current mr-1" />
+                    {destination.rating}
+                  </Badge>
+                )}
+
+                {destination.best_for && destination.best_for[0] && (
+                  <Badge className="absolute bottom-4 left-4 bg-primary/95 text-primary-foreground">
+                    {destination.best_for[0]}
+                  </Badge>
+                )}
               </div>
 
-              {/* Best For Badge */}
-              <div className="absolute bottom-3 left-3 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-bold">
-                {destination.bestFor}
-              </div>
-            </div>
-
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-2xl font-bold">{destination.name}</h3>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Users className="w-4 h-4" />
-                  {destination.visitors}
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {destination.name}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-primary">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-medium">{destination.region}</span>
+                    </div>
+                  </div>
+                  {destination.visitor_count && (
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <Users className="w-4 h-4" />
+                      <span className="text-xs">{destination.visitor_count}</span>
+                    </div>
+                  )}
                 </div>
-              </div>
 
-              <div className="flex items-center gap-2 mb-3">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-sm text-primary font-medium">{destination.region}</span>
-              </div>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
+                  {destination.short_description}
+                </p>
 
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                {destination.description}
-              </p>
+                {destination.highlights && destination.highlights.length > 0 && (
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {destination.highlights.slice(0, 3).map((highlight, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {highlight}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-              <div className="mb-4">
-                <h4 className="font-semibold text-sm mb-2 flex items-center gap-1">
-                  <Camera className="w-4 h-4" />
-                  Hoogtepunten:
-                </h4>
-                <div className="flex flex-wrap gap-1">
-                  {destination.highlights.map((highlight, index) => (
-                    <span key={index} className="bg-muted text-muted-foreground px-2 py-1 rounded-full text-xs">
-                      {highlight}
-                    </span>
-                  ))}
+                <div className="flex items-center justify-between mt-4 pt-4 border-t">
+                  <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
+                    Lees meer
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
+                    Ontdek
+                  </Button>
                 </div>
-              </div>
-
-              <Button 
-                variant="outline" 
-                className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-              >
-                Ontdek {destination.name} →
-              </Button>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
 
       {/* Regional Quick Stats */}
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="border-0 shadow-soft text-center">
-          <CardContent className="p-6">
-            <h3 className="text-xl font-bold mb-2 text-primary">🌊 West Algarve</h3>
-            <p className="text-2xl font-bold text-muted-foreground mb-1">8</p>
-            <p className="text-sm text-muted-foreground">Top Bestemmingen</p>
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="border-0 shadow-lg text-center hover:shadow-xl transition-shadow">
+          <CardContent className="p-8">
+            <div className="text-4xl mb-3">🌊</div>
+            <h3 className="text-xl font-bold mb-2 text-primary">West Algarve</h3>
+            <p className="text-3xl font-bold text-foreground mb-1">{regionStats['West Algarve']}</p>
+            <p className="text-sm text-muted-foreground">Bestemmingen</p>
           </CardContent>
         </Card>
-        <Card className="border-0 shadow-soft text-center">
-          <CardContent className="p-6">
-            <h3 className="text-xl font-bold mb-2 text-secondary">🏖️ Centraal Algarve</h3>
-            <p className="text-2xl font-bold text-muted-foreground mb-1">12</p>
-            <p className="text-sm text-muted-foreground">Top Bestemmingen</p>
+        <Card className="border-0 shadow-lg text-center hover:shadow-xl transition-shadow">
+          <CardContent className="p-8">
+            <div className="text-4xl mb-3">🏖️</div>
+            <h3 className="text-xl font-bold mb-2 text-secondary">Central Algarve</h3>
+            <p className="text-3xl font-bold text-foreground mb-1">{regionStats['Central Algarve']}</p>
+            <p className="text-sm text-muted-foreground">Bestemmingen</p>
           </CardContent>
         </Card>
-        <Card className="border-0 shadow-soft text-center">
-          <CardContent className="p-6">
-            <h3 className="text-xl font-bold mb-2 text-accent">🏛️ Oost Algarve</h3>
-            <p className="text-2xl font-bold text-muted-foreground mb-1">6</p>
-            <p className="text-sm text-muted-foreground">Top Bestemmingen</p>
+        <Card className="border-0 shadow-lg text-center hover:shadow-xl transition-shadow">
+          <CardContent className="p-8">
+            <div className="text-4xl mb-3">🏛️</div>
+            <h3 className="text-xl font-bold mb-2 text-accent">East Algarve</h3>
+            <p className="text-3xl font-bold text-foreground mb-1">{regionStats['East Algarve']}</p>
+            <p className="text-sm text-muted-foreground">Bestemmingen</p>
           </CardContent>
         </Card>
       </div>

@@ -2,8 +2,12 @@ import React from 'react';
 import AlgarveDestinationGrid from '@/components/AlgarveDestinationGrid';
 import InteractiveMap from '@/components/InteractiveMap';
 import AlgarveGallery from '@/components/AlgarveGallery';
+import { FeaturedExperts } from '@/components/FeaturedExperts';
+import { FeaturedInsiderTips } from '@/components/FeaturedInsiderTips';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import SectionNav from '@/components/SectionNav';
+import { ArrowRight } from 'lucide-react';
 
 const Bestemmingen = () => {
   const structuredData = {
@@ -58,9 +62,10 @@ const Bestemmingen = () => {
 
         <SectionNav items={[
           { href: '#kaart', label: 'Kaart' },
+          { href: '#experts', label: 'Experts' },
+          { href: '#tips', label: 'Insider Tips' },
           { href: '#galerij', label: 'Galerij' },
           { href: '#bestemmingen', label: 'Bestemmingen' },
-          { href: '#regios', label: "Regio's" },
         ]} />
 
         {/* Interactive Map */}
@@ -78,18 +83,53 @@ const Bestemmingen = () => {
           </div>
         </section>
 
+        {/* Featured Experts */}
+        <section id="experts" className="scroll-mt-24">
+          <FeaturedExperts />
+        </section>
+
+        {/* Featured Insider Tips */}
+        <section id="tips" className="scroll-mt-24">
+          <FeaturedInsiderTips />
+        </section>
+
         {/* Visual Gallery */}
         <section id="galerij" className="py-12 scroll-mt-24">
           <AlgarveGallery />
         </section>
 
         {/* Destination Grid */}
-        <section id="bestemmingen" className="py-12 px-4 bg-muted/20 scroll-mt-24">
+        <section id="bestemmingen" className="py-16 px-4 bg-muted/20 scroll-mt-24">
           <AlgarveDestinationGrid />
         </section>
 
+        {/* Call to Action */}
+        <section className="py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-r from-primary via-secondary to-accent border-0 shadow-xl">
+              <CardContent className="p-12 text-center text-white">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Klaar om de Algarve te Ontdekken?
+                </h2>
+                <p className="text-xl mb-8 text-white/90">
+                  Krijg gepersonaliseerd advies van onze lokale experts
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" variant="secondary" className="text-lg">
+                    Bekijk alle bestemmingen
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-lg bg-white/10 border-white/30 text-white hover:bg-white/20">
+                    Plan je reis
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* Regional Information */}
-        <section id="regios" className="py-12 px-4 scroll-mt-24">
+        <section id="regios" className="py-12 px-4 scroll-mt-24 bg-muted/10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
               Regio's van de Algarve
