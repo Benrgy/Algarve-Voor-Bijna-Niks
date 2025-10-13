@@ -10,6 +10,7 @@ import Breadcrumbs from "./components/Breadcrumbs";
 import BackToTop from "./components/BackToTop";
 import Index from "./pages/Index";
 import Bestemmingen from "./pages/Bestemmingen";
+import Destination from "./pages/Destination";
 import Deals from "./pages/Deals";
 import Gidsen from "./pages/Gidsen";
 import Blog from "./pages/Blog";
@@ -33,6 +34,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/bestemmingen" element={<Bestemmingen />} />
+              <Route path="/bestemmingen/:slug" element={<Destination />} />
               <Route path="/deals" element={<Deals />} />
               <Route path="/gidsen" element={<Gidsen />} />
               <Route path="/blog" element={<Blog />} />
