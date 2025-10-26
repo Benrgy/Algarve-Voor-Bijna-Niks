@@ -22,27 +22,31 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
   const [guests, setGuests] = useState(2);
 
   const handleSearch = () => {
+    if (!checkIn || !checkOut) {
+      return;
+    }
+
     const params = new URLSearchParams({
-      destination: destination,
+      ss: destination,
       checkin: checkIn,
       checkout: checkOut,
-      guests: guests.toString(),
-      utm_source: 'algarve-voor-bijna-niks',
-      utm_campaign: 'booking-widget'
+      group_adults: guests.toString(),
+      group_children: '0',
+      no_rooms: '1',
+      selected_currency: 'EUR'
     });
 
-    // Multi-provider search - open multiple booking sites
-    const providers = [
-      `https://www.booking.com/searchresults.html?ss=${destination}&${params}`,
-      `https://www.expedia.nl/Hotel-Search?destination=${destination}&${params}`,
-      `https://www.hotels.com/search.do?destination-id=${destination}&${params}`
-    ];
-
-    providers.forEach((url, index) => {
-      setTimeout(() => {
-        window.open(url, `_blank_${index}`, 'noopener,noreferrer');
-      }, index * 200);
-    });
+    // Affiliate links - Add your actual affiliate IDs when you have them
+    const bookingUrl = `https://www.booking.com/searchresults.html?${params}&aid=YOUR_BOOKING_AFFILIATE_ID`;
+    const airbnbUrl = `https://www.airbnb.nl/s/${encodeURIComponent(destination)}/homes?checkin=${checkIn}&checkout=${checkOut}&adults=${guests}`;
+    
+    // Open primary booking platform
+    window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+    
+    // Optional: Open secondary platform after a delay
+    setTimeout(() => {
+      window.open(airbnbUrl, '_blank', 'noopener,noreferrer');
+    }, 500);
   };
 
   return (
@@ -116,16 +120,22 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
 
         <Button
           onClick={handleSearch}
-          className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold"
+          disabled={!checkIn || !checkOut}
+          className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold disabled:opacity-50"
           size="lg"
         >
           <ExternalLink className="w-4 h-4 mr-2" />
           Vergelijk Alle Prijzen
         </Button>
 
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Percent className="w-3 h-3" />
-          <span>Gratis annulering bij meeste hotels</span>
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Percent className="w-3 h-3" />
+            <span>Gratis annulering bij meeste accommodaties</span>
+          </div>
+          <div className="text-xs text-muted-foreground text-center">
+            ℹ️ Commissie wordt betaald door boekingsplatforms, niet door jou
+          </div>
         </div>
       </CardContent>
     </Card>

@@ -6,8 +6,9 @@ import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 import TrustSignals from '@/components/TrustSignals';
 import BookingWidget from '@/components/BookingWidget';
 import WeatherWidget from '@/components/WeatherWidget';
-import GamificationSystem from '@/components/GamificationSystem';
 import AIAssistant from '@/components/AIAssistant';
+import FeaturedDestinationsPreview from '@/components/FeaturedDestinationsPreview';
+import AffiliateServices from '@/components/AffiliateServices';
 
 
 const Index = () => {
@@ -162,19 +163,27 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Enhanced Features Grid */}
+        {/* Booking & Weather Widgets */}
         <div className="py-16 px-4 bg-muted/20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Booking Widget */}
-            <BookingWidget destination="Algarve" priceFrom={199} discountPercent={45} />
-            
-            {/* Weather Widget */}
-            <WeatherWidget />
-            
-            {/* Gamification */}
-            <GamificationSystem />
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Begin Je Reis Planning</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Vergelijk prijzen van de beste boekingsplatforms en check het weer in de Algarve
+              </p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <BookingWidget destination="Algarve" priceFrom={199} discountPercent={45} />
+              <WeatherWidget />
+            </div>
           </div>
         </div>
+
+        {/* Featured Destinations with Real Photos */}
+        <FeaturedDestinationsPreview />
+
+        {/* Affiliate Services */}
+        <AffiliateServices />
 
         {/* Quick Navigation */}
         <section className="py-16 px-4">
