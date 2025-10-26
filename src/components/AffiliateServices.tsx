@@ -108,38 +108,6 @@ const AffiliateServices = () => {
           ))}
         </div>
 
-        {/* Trust & Value Proposition */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="border-0 shadow-soft bg-gradient-to-br from-primary/5 to-secondary/5">
-            <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-3">✅</div>
-              <h3 className="font-bold mb-2">Beste Prijsgarantie</h3>
-              <p className="text-sm text-muted-foreground">
-                Vind je het goedkoper? We matchen de prijs of geven je geld terug
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-0 shadow-soft bg-gradient-to-br from-secondary/5 to-accent/5">
-            <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-3">🇳🇱</div>
-              <h3 className="font-bold mb-2">Nederlandse Service</h3>
-              <p className="text-sm text-muted-foreground">
-                24/7 hulp in het Nederlands voor al je vragen
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-0 shadow-soft bg-gradient-to-br from-accent/5 to-primary/5">
-            <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-3">🎁</div>
-              <h3 className="font-bold mb-2">Gratis Insider Gids</h3>
-              <p className="text-sm text-muted-foreground">
-                Bij elke boeking ontvang je onze exclusieve lokale reisgids
-              </p>
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Affiliate Disclaimer */}
         <div className="mt-8 text-center">
