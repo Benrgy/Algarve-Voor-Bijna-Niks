@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Star, Users, ArrowRight, Sparkles } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { resolveDestinationHeroImage } from '@/utils/imageResolver';
+import defaultHero from '@/assets/algarve-hero-beach.jpg';
 
 interface Destination {
   id: string;
@@ -75,87 +77,89 @@ const AlgarveDestinationGrid = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {destinations.map((destination) => (
-          <Link 
-            key={destination.id} 
-            to={`/bestemmingen/${destination.slug}`}
-            className="group"
-          >
-            <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-full">
-              <div className="relative h-56">
-                {destination.hero_image ? (
+        {destinations.map((destination) => {
+          const imgSrc = resolveDestinationHeroImage(destination);
+          const altText = destination.short_description
+            ? `${destination.name} – ${destination.short_description}`
+            : `${destination.name} Algarve reisfotografie`;
+
+          return (
+            <Link 
+              key={destination.id} 
+              to={`/bestemmingen/${destination.slug}`}
+              className="group"
+            >
+              <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-full">
+                <div className="relative h-56">
                   <img
-                    src={destination.hero_image}
-                    alt={destination.name}
+                    src={imgSrc || defaultHero}
+                    alt={altText}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
                   />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {destination.rating && (
-                  <Badge className="absolute top-4 right-4 bg-white/95 text-foreground hover:bg-white">
-                    <Star className="w-3 h-3 text-yellow-500 fill-current mr-1" />
-                    {destination.rating}
-                  </Badge>
-                )}
-
-                {destination.best_for && destination.best_for[0] && (
-                  <Badge className="absolute bottom-4 left-4 bg-primary/95 text-primary-foreground">
-                    {destination.best_for[0]}
-                  </Badge>
-                )}
-              </div>
-
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {destination.name}
-                    </h3>
-                    <div className="flex items-center gap-2 text-sm text-primary">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-medium">{destination.region}</span>
-                    </div>
-                  </div>
-                  {destination.visitor_count && (
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Users className="w-4 h-4" />
-                      <span className="text-xs">{destination.visitor_count}</span>
-                    </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  {destination.rating && (
+                    <Badge className="absolute top-4 right-4 bg-white/95 text-foreground hover:bg-white">
+                      <Star className="w-3 h-3 text-yellow-500 fill-current mr-1" />
+                      {destination.rating}
+                    </Badge>
+                  )}
+                  {destination.best_for && destination.best_for[0] && (
+                    <Badge className="absolute bottom-4 left-4 bg-primary/95 text-primary-foreground">
+                      {destination.best_for[0]}
+                    </Badge>
                   )}
                 </div>
 
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
-                  {destination.short_description}
-                </p>
-
-                {destination.highlights && destination.highlights.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {destination.highlights.slice(0, 3).map((highlight, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {highlight}
-                        </Badge>
-                      ))}
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {destination.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-primary">
+                        <MapPin className="w-4 h-4" />
+                        <span className="font-medium">{destination.region}</span>
+                      </div>
                     </div>
+                    {destination.visitor_count && (
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <Users className="w-4 h-4" />
+                        <span className="text-xs">{destination.visitor_count}</span>
+                      </div>
+                    )}
                   </div>
-                )}
 
-                <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                  <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
-                    Lees meer
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
-                    Ontdek
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
+                    {destination.short_description}
+                  </p>
+
+                  {destination.highlights && destination.highlights.length > 0 && (
+                    <div className="mb-4">
+                      <div className="flex flex-wrap gap-2">
+                        {destination.highlights.slice(0, 3).map((highlight, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs">
+                            {highlight}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t">
+                    <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
+                      Lees meer
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
+                      Ontdek
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
 
       {/* Regional Quick Stats */}

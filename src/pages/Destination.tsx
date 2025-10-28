@@ -9,6 +9,8 @@ import { ExpertProfileCard } from "@/components/ExpertProfileCard";
 import { InsiderTipCard } from "@/components/InsiderTipCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Star, Users, MapPin, Calendar, TrendingUp, Euro } from "lucide-react";
+import { resolveDestinationHeroImage } from "@/utils/imageResolver";
+import defaultHero from "@/assets/algarve-hero-beach.jpg";
 
 interface Destination {
   id: string;
@@ -142,13 +144,11 @@ export default function Destination() {
 
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] bg-gradient-to-br from-primary/20 to-secondary/20">
-        {destination.hero_image && (
-          <img
-            src={destination.hero_image}
-            alt={destination.hero_image_alt || destination.name}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )}
+        <img
+          src={resolveDestinationHeroImage(destination) || defaultHero}
+          alt={destination.hero_image_alt || `${destination.name} Algarve reisfotografie`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-end pb-12">
           <div className="max-w-3xl">

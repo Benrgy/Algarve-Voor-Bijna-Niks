@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, ArrowRight, Star } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { resolveDestinationHeroImage } from '@/utils/imageResolver';
+import defaultHero from '@/assets/algarve-hero-beach.jpg';
 
 interface Destination {
   id: string;
@@ -72,67 +74,70 @@ const FeaturedDestinationsPreview = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {destinations.map((destination) => (
-            <Link 
-              key={destination.id} 
-              to={`/bestemmingen/${destination.slug}`}
-              className="group"
-            >
-              <Card className="overflow-hidden border-0 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-[1.02] h-full">
-                <div className="relative h-64">
-                  {destination.hero_image ? (
-                    <img
-                      src={destination.hero_image}
-                      alt={destination.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  
-                  {destination.rating && (
-                    <Badge className="absolute top-4 right-4 bg-white/95 text-foreground hover:bg-white">
-                      <Star className="w-3 h-3 text-yellow-500 fill-current mr-1" />
-                      {destination.rating}
-                    </Badge>
-                  )}
+          {destinations.map((destination) => {
+            const imgSrc = resolveDestinationHeroImage(destination);
+            const altText = destination.short_description
+              ? `${destination.name} – ${destination.short_description}`
+              : `${destination.name} Algarve reisfotografie`;
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                      {destination.name}
-                    </h3>
-                    <div className="flex items-center gap-2 text-white/90">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-medium">{destination.region}</span>
+            return (
+              <Link 
+                key={destination.id} 
+                to={`/bestemmingen/${destination.slug}`}
+                className="group"
+              >
+                <Card className="overflow-hidden border-0 shadow-soft hover:shadow-warm transition-all duration-300 hover:scale-[1.02] h-full">
+                  <div className="relative h-64">
+                    <img
+                      src={imgSrc || defaultHero}
+                      alt={altText}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    {destination.rating && (
+                      <Badge className="absolute top-4 right-4 bg-white/95 text-foreground hover:bg-white">
+                        <Star className="w-3 h-3 text-yellow-500 fill-current mr-1" />
+                        {destination.rating}
+                      </Badge>
+                    )}
+
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                        {destination.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-white/90">
+                        <MapPin className="w-4 h-4" />
+                        <span className="font-medium">{destination.region}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {destination.short_description}
-                  </p>
+                  <CardContent className="p-6">
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      {destination.short_description}
+                    </p>
 
-                  {destination.best_for && destination.best_for[0] && (
-                    <Badge variant="secondary" className="mb-4">
-                      {destination.best_for[0]}
-                    </Badge>
-                  )}
+                    {destination.best_for && destination.best_for[0] && (
+                      <Badge variant="secondary" className="mb-4">
+                        {destination.best_for[0]}
+                      </Badge>
+                    )}
 
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
-                      Ontdek meer
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    <Button size="sm" variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
-                      Bekijk →
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+                    <div className="flex items-center justify-between pt-4 border-t">
+                      <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
+                        Ontdek meer
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                      <Button size="sm" variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary">
+                        Bekijk →
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="text-center">
