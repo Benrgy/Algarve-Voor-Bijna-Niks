@@ -2,7 +2,7 @@ import React from 'react';
 import TravelGuides from '@/components/TravelGuides';
 import AlgarveFAQ from '@/components/AlgarveFAQ';
 import AlgarveInsights from '@/components/AlgarveInsights';
-import ProfessionalTestimonials from '@/components/ProfessionalTestimonials';
+import WhatToExpect from '@/components/WhatToExpect';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
 
@@ -164,8 +164,8 @@ const Gidsen = () => {
         {/* Algarve Insights */}
         <AlgarveInsights />
 
-        {/* Professional Testimonials */}
-        <ProfessionalTestimonials />
+        {/* What to Expect */}
+        <WhatToExpect />
 
         {/* FAQ Section */}
         <section id="faq" className="py-12 px-4 bg-muted/20">

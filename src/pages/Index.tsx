@@ -78,9 +78,9 @@ const Index = () => {
                   🌊 Authentieke Lokale Ervaringen
                 </span>
               </div>
-              <p className="text-white/90 text-sm font-medium">
-                💰 Gemiddelde besparing: €312 per vakantie | 🌟 4.9/5 sterren van 12.847 reviews
-              </p>
+            <p className="text-white/90 text-sm font-medium">
+              🌱 Nieuwe site met lokale kennis | 💼 Vind deals via affiliate partners | 🏖️ 60+ bestemmingen
+            </p>
             </div>
             
             <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">

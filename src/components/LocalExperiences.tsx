@@ -138,14 +138,17 @@ const LocalExperiences: React.FC = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-green-500" />
-              <span>Gemiddeld €185 bespaard per ervaring</span>
+              <MapPin className="w-4 h-4 text-green-500" />
+              <span>Lokale tips van echte bewoners</span>
             </div>
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-yellow-500" />
-              <span>4.9/5 sterren van 2.840 deelnemers</span>
+              <Heart className="w-4 h-4 text-primary" />
+              <span>Authentieke ervaringen</span>
             </div>
           </div>
+          <p className="text-sm text-muted-foreground text-center mt-2">
+            💡 Prijzen zijn indicatief en kunnen variëren per seizoen
+          </p>
         </div>
 
         {/* Experiences Grid */}

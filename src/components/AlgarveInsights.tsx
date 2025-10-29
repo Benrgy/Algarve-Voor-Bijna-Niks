@@ -184,14 +184,14 @@ const AlgarveInsights: React.FC = () => {
             <div className="text-xs text-muted-foreground">Lokale eetgelegenheden</div>
           </Card>
           <Card className="text-center p-4 border-0 shadow-soft">
-            <div className="text-2xl mb-2">💰</div>
-            <div className="text-xl font-bold text-accent">€312</div>
-            <div className="text-xs text-muted-foreground">Gem. besparing</div>
+            <div className="text-2xl mb-2">💼</div>
+            <div className="text-xl font-bold text-accent">10+</div>
+            <div className="text-xs text-muted-foreground">Affiliate partners</div>
           </Card>
           <Card className="text-center p-4 border-0 shadow-soft">
-            <div className="text-2xl mb-2">⭐</div>
-            <div className="text-xl font-bold text-primary">4.9/5</div>
-            <div className="text-xs text-muted-foreground">Tevredenheid</div>
+            <div className="text-2xl mb-2">📅</div>
+            <div className="text-xl font-bold text-primary">24/7</div>
+            <div className="text-xs text-muted-foreground">Actuele info</div>
           </Card>
         </div>
       </div>
