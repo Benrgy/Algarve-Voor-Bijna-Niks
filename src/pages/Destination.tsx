@@ -127,9 +127,9 @@ export default function Destination() {
   if (!destination) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-3xl font-bold mb-4">Destination not found</h1>
+        <h1 className="text-3xl font-bold mb-4">Bestemming niet gevonden</h1>
         <p className="text-muted-foreground">
-          Sorry, we couldn't find the destination you're looking for.
+          Sorry, we konden de bestemming die je zoekt niet vinden.
         </p>
       </div>
     );
@@ -183,7 +183,7 @@ export default function Destination() {
                 <Users className="w-8 h-8 text-primary" />
                 <div>
                   <p className="text-2xl font-bold">{destination.visitor_count}</p>
-                  <p className="text-sm text-muted-foreground">Visitors/year</p>
+                  <p className="text-sm text-muted-foreground">Bezoekers/jaar</p>
                 </div>
               </div>
             )}
@@ -192,7 +192,7 @@ export default function Destination() {
                 <Star className="w-8 h-8 text-primary fill-current" />
                 <div>
                   <p className="text-2xl font-bold">{destination.rating}/5</p>
-                  <p className="text-sm text-muted-foreground">Rating</p>
+                  <p className="text-sm text-muted-foreground">Beoordeling</p>
                 </div>
               </div>
             )}
@@ -201,7 +201,7 @@ export default function Destination() {
                 <Euro className="w-8 h-8 text-primary" />
                 <div>
                   <p className="text-2xl font-bold">€{destination.average_costs.daily}</p>
-                  <p className="text-sm text-muted-foreground">Per day</p>
+                  <p className="text-sm text-muted-foreground">Per dag</p>
                 </div>
               </div>
             )}
@@ -210,7 +210,7 @@ export default function Destination() {
                 <Calendar className="w-8 h-8 text-primary" />
                 <div>
                   <p className="text-sm font-bold">{destination.best_time_to_visit}</p>
-                  <p className="text-sm text-muted-foreground">Best time</p>
+                  <p className="text-sm text-muted-foreground">Beste tijd</p>
                 </div>
               </div>
             )}
@@ -226,7 +226,7 @@ export default function Destination() {
             {/* Highlights */}
             {destination.highlights && destination.highlights.length > 0 && (
               <section>
-                <h2 className="text-3xl font-bold mb-6">Highlights</h2>
+                <h2 className="text-3xl font-bold mb-6">Hoogtepunten</h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   {destination.highlights.map((highlight, index) => (
                     <Card key={index}>
@@ -243,7 +243,7 @@ export default function Destination() {
             {/* Historical Context */}
             {destination.historical_context && (
               <section>
-                <h2 className="text-3xl font-bold mb-6">History & Culture</h2>
+                <h2 className="text-3xl font-bold mb-6">Geschiedenis & Cultuur</h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-muted-foreground whitespace-pre-line">
                     {destination.historical_context}
@@ -255,7 +255,7 @@ export default function Destination() {
             {/* Beach Guides */}
             {destination.beach_guides && (
               <section>
-                <h2 className="text-3xl font-bold mb-6">Beach Guide</h2>
+                <h2 className="text-3xl font-bold mb-6">Strandgids</h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-muted-foreground whitespace-pre-line">
                     {destination.beach_guides}
@@ -267,7 +267,7 @@ export default function Destination() {
             {/* Attractions */}
             {destination.attractions && (
               <section>
-                <h2 className="text-3xl font-bold mb-6">Top Attractions</h2>
+                <h2 className="text-3xl font-bold mb-6">Top Attracties</h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-muted-foreground whitespace-pre-line">
                     {destination.attractions}
@@ -279,7 +279,7 @@ export default function Destination() {
             {/* Dining Scene */}
             {destination.dining_scene && (
               <section>
-                <h2 className="text-3xl font-bold mb-6">Dining & Food</h2>
+                <h2 className="text-3xl font-bold mb-6">Eten & Drinken</h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-muted-foreground whitespace-pre-line">
                     {destination.dining_scene}
@@ -307,7 +307,7 @@ export default function Destination() {
             {destination.best_for && destination.best_for.length > 0 && (
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-4">Perfect For</h3>
+                  <h3 className="font-bold mb-4">Perfect Voor</h3>
                   <div className="flex flex-wrap gap-2">
                     {destination.best_for.map((item, index) => (
                       <Badge key={index} variant="secondary">
@@ -335,7 +335,7 @@ export default function Destination() {
             {destination.hidden_gems && (
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-4">Hidden Gems</h3>
+                  <h3 className="font-bold mb-4">Verborgen Parels</h3>
                   <p className="text-sm text-muted-foreground whitespace-pre-line">
                     {destination.hidden_gems}
                   </p>
@@ -347,7 +347,7 @@ export default function Destination() {
             {destination.transportation && (
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-4">Getting Around</h3>
+                  <h3 className="font-bold mb-4">Vervoer</h3>
                   <p className="text-sm text-muted-foreground whitespace-pre-line">
                     {destination.transportation}
                   </p>
@@ -358,7 +358,7 @@ export default function Destination() {
             {/* Expert Profiles */}
             {experts.length > 0 && (
               <div>
-                <h3 className="font-bold mb-4">Local Experts</h3>
+                <h3 className="font-bold mb-4">Lokale Experts</h3>
                 <div className="space-y-4">
                   {experts.map((expert) => (
                     <ExpertProfileCard key={expert.id} expert={expert} />
