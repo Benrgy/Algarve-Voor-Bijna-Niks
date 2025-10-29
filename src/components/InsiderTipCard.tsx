@@ -34,10 +34,10 @@ const getTipTypeColor = (type: string) => {
 
 const getTipTypeLabel = (type: string) => {
   const labels: Record<string, string> = {
-    hidden_gem: "Hidden Gem",
-    timing: "Best Time",
-    experience: "Experience",
-    local_culture: "Local Culture",
+    hidden_gem: "Verborgen Parel",
+    timing: "Beste Tijd",
+    experience: "Ervaring",
+    local_culture: "Lokale Cultuur",
   };
   return labels[type] || type;
 };
@@ -77,7 +77,7 @@ export const InsiderTipCard = ({ tip }: InsiderTipCardProps) => {
             {tip.practical_info.best_time && (
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Clock className="w-3 h-3" />
-                <span>Best time: {tip.practical_info.best_time}</span>
+                <span>Beste tijd: {tip.practical_info.best_time}</span>
               </div>
             )}
             {tip.practical_info.location && (
