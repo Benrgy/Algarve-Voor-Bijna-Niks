@@ -113,31 +113,35 @@ const AlgarveDestinationGrid = () => {
 
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                         {destination.name}
                       </h3>
-                      <div className="flex items-center gap-2 text-sm text-primary">
+                      <div className="flex items-center gap-2 text-sm text-primary mb-3">
                         <MapPin className="w-4 h-4" />
                         <span className="font-medium">{destination.region}</span>
                       </div>
                     </div>
                     {destination.visitor_count && (
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <Users className="w-4 h-4" />
-                        <span className="text-xs">{destination.visitor_count}</span>
+                      <div className="flex flex-col items-end gap-1">
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Users className="w-4 h-4" />
+                          <span className="text-xs">{destination.visitor_count}</span>
+                        </div>
+                        <Badge variant="outline" className="text-xs">Populair</Badge>
                       </div>
                     )}
                   </div>
 
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3 leading-relaxed">
                     {destination.short_description}
                   </p>
 
                   {destination.highlights && destination.highlights.length > 0 && (
                     <div className="mb-4">
+                      <h4 className="text-xs font-semibold text-muted-foreground mb-2">✨ Hoogtepunten</h4>
                       <div className="flex flex-wrap gap-2">
-                        {destination.highlights.slice(0, 3).map((highlight, index) => (
+                        {destination.highlights.slice(0, 4).map((highlight, index) => (
                           <Badge key={index} variant="secondary" className="text-xs">
                             {highlight}
                           </Badge>
@@ -146,13 +150,26 @@ const AlgarveDestinationGrid = () => {
                     </div>
                   )}
 
+                  {destination.best_for && destination.best_for.length > 0 && (
+                    <div className="mb-4 p-3 bg-primary/5 rounded-lg border-l-4 border-primary">
+                      <p className="text-xs font-semibold text-primary mb-1">🎯 Perfect voor</p>
+                      <div className="flex flex-wrap gap-1">
+                        {destination.best_for.slice(0, 3).map((item, index) => (
+                          <span key={index} className="text-xs text-muted-foreground">
+                            {item}{index < Math.min(2, destination.best_for!.length - 1) ? ' • ' : ''}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mt-4 pt-4 border-t">
                     <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
-                      Lees meer
+                      Lees volledige gids
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                     <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
-                      Ontdek
+                      Ontdek →
                     </Button>
                   </div>
                 </CardContent>
