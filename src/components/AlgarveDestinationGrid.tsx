@@ -20,6 +20,8 @@ interface Destination {
   hero_image?: string;
   best_for?: string[];
   highlights?: string[];
+  historical_context?: string;
+  best_time_to_visit?: string;
 }
 
 const AlgarveDestinationGrid = () => {
@@ -30,7 +32,7 @@ const AlgarveDestinationGrid = () => {
     const fetchDestinations = async () => {
       const { data } = await supabase
         .from('destinations')
-        .select('*')
+        .select('id, slug, name, region, short_description, rating, visitor_count, hero_image, best_for, highlights, historical_context, best_time_to_visit')
         .eq('published', true)
         .order('visitor_count', { ascending: false });
 
@@ -137,6 +139,15 @@ const AlgarveDestinationGrid = () => {
                     {destination.short_description}
                   </p>
 
+                  {destination.historical_context && (
+                    <div className="mb-4 p-3 bg-accent/5 rounded-lg border-l-2 border-accent">
+                      <p className="text-xs font-semibold text-accent-foreground mb-1">🏛️ Geschiedenis</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2 italic">
+                        {destination.historical_context}
+                      </p>
+                    </div>
+                  )}
+
                   {destination.highlights && destination.highlights.length > 0 && (
                     <div className="mb-4">
                       <h4 className="text-xs font-semibold text-muted-foreground mb-2">✨ Hoogtepunten</h4>
@@ -147,6 +158,17 @@ const AlgarveDestinationGrid = () => {
                           </Badge>
                         ))}
                       </div>
+                    </div>
+                  )}
+
+                  {destination.best_time_to_visit && (
+                    <div className="mb-4 p-2 bg-secondary/5 rounded">
+                      <p className="text-xs">
+                        <span className="text-muted-foreground">🗓️ Beste reistijd:</span>
+                        <span className="ml-1 font-medium text-secondary-foreground">
+                          {destination.best_time_to_visit.split('.')[0]}
+                        </span>
+                      </p>
                     </div>
                   )}
 
@@ -165,7 +187,7 @@ const AlgarveDestinationGrid = () => {
 
                   <div className="flex items-center justify-between mt-4 pt-4 border-t">
                     <span className="text-sm font-semibold text-primary group-hover:gap-2 transition-all flex items-center gap-1">
-                      Lees volledige gids
+                      Lees het volledige verhaal
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                     <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
