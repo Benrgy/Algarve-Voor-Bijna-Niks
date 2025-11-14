@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { SEOWrapper } from "./components/SEOWrapper";
 import Navigation from "./components/Navigation";
-import Breadcrumbs from "./components/Breadcrumbs";
+import EnhancedBreadcrumbs from "./components/EnhancedBreadcrumbs";
 import BackToTop from "./components/BackToTop";
+import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Bestemmingen from "./pages/Bestemmingen";
 import Destination from "./pages/Destination";
@@ -30,7 +31,7 @@ const App = () => (
         <BrowserRouter basename={BASENAME}>
           <SEOWrapper>
             <Navigation />
-            <Breadcrumbs />
+            <EnhancedBreadcrumbs />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/bestemmingen" element={<Bestemmingen />} />
@@ -42,6 +43,7 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
             <BackToTop />
           </SEOWrapper>
         </BrowserRouter>

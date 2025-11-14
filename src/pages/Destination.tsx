@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { ExpertProfileCard } from "@/components/ExpertProfileCard";
 import { InsiderTipCard } from "@/components/InsiderTipCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import QuickActionBar from "@/components/QuickActionBar";
+import CTASection from "@/components/CTASection";
 import { Star, Users, MapPin, Calendar, TrendingUp, Euro } from "lucide-react";
 import { resolveDestinationHeroImage } from "@/utils/imageResolver";
 import defaultHero from "@/assets/algarve-hero-beach.jpg";
@@ -141,6 +143,9 @@ export default function Destination() {
         <title>{destination.title}</title>
         <meta name="description" content={destination.meta_description} />
       </Helmet>
+
+      {/* Quick Action Bar */}
+      <QuickActionBar destinationName={destination.name} />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] bg-gradient-to-br from-primary/20 to-secondary/20">
@@ -369,6 +374,14 @@ export default function Destination() {
           </div>
         </div>
       </div>
+
+      {/* CTA Section */}
+      <CTASection 
+        title={`Ontdek meer van ${destination.name}`}
+        description="Vind de beste deals en plan je perfecte vakantie"
+        primaryButtonText="🏖️ Meer Bestemmingen"
+        primaryButtonLink="/bestemmingen"
+      />
     </>
   );
 }

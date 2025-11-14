@@ -9,6 +9,10 @@ import WeatherWidget from '@/components/WeatherWidget';
 import AIAssistant from '@/components/AIAssistant';
 import FeaturedDestinationsPreview from '@/components/FeaturedDestinationsPreview';
 import AffiliateServices from '@/components/AffiliateServices';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import BenefitsSection from '@/components/BenefitsSection';
+import PhotoShowcase from '@/components/PhotoShowcase';
+import CTASection from '@/components/CTASection';
 
 
 const Index = () => {
@@ -182,6 +186,12 @@ const Index = () => {
         {/* Featured Destinations with Real Photos */}
         <FeaturedDestinationsPreview />
 
+        {/* Photo Showcase */}
+        <PhotoShowcase />
+
+        {/* Benefits Section */}
+        <BenefitsSection />
+
         {/* Affiliate Services */}
         <AffiliateServices />
 
@@ -240,62 +250,19 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <TestimonialsSection />
+
+        {/* Final CTA */}
+        <CTASection 
+          title="Begin Je Algarve Avontuur Vandaag"
+          description="Sluit je aan bij duizenden tevreden reizigers die al honderden euro's bespaard hebben"
+          variant="accent"
+        />
+
         {/* Trust Signals & AI Assistant */}
         <TrustSignals />
         <AIAssistant />
-
-        {/* Footer */}
-        <footer className="bg-foreground text-background py-12 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4">Algarve voor Bijna Niks</h3>
-                <p className="text-background/80 text-sm">
-                  Jouw specialist voor goedkope vakanties naar de prachtige Algarve in Portugal. 
-                  Wij helpen Nederlandse reizigers al sinds 2020 om de beste deals te vinden.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Ontdek</h4>
-                <ul className="space-y-2 text-sm text-background/80">
-                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">🏖️ Alle Bestemmingen</Link></li>
-                  <li><Link to="/deals" className="hover:text-primary transition-colors">💰 Beste Deals</Link></li>
-                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">📖 Reisgidsen</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Populaire Plekken</h4>
-                <ul className="space-y-2 text-sm text-background/80">
-                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Lagos</Link></li>
-                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Portimão</Link></li>
-                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Faro</Link></li>
-                  <li><Link to="/bestemmingen" className="hover:text-primary transition-colors">Albufeira</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Hulp & Info</h4>
-                <ul className="space-y-2 text-sm text-background/80">
-                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">Budget Tips</Link></li>
-                  <li><Link to="/gidsen" className="hover:text-primary transition-colors">Beste Reistijd</Link></li>
-                  <li><Link to="/deals" className="hover:text-primary transition-colors">Vliegtickets</Link></li>
-                  <li><Link to="/deals" className="hover:text-primary transition-colors">Last Minute</Link></li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="border-t border-background/20 pt-8 text-center text-sm text-background/60">
-              <p className="mb-2">
-                <strong>Affiliate Disclaimer:</strong> Wij ontvangen commissie als je een aanbieding boekt via onze links. 
-                Dit heeft geen invloed op de prijs die je betaalt.
-              </p>
-              <p>
-                © 2024 Algarve voor Bijna Niks. Alle rechten voorbehouden. | 
-                <a href="#" className="hover:text-primary ml-1 transition-colors">Privacybeleid</a> | 
-                <a href="#" className="hover:text-primary ml-1 transition-colors">Contact</a>
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
   );

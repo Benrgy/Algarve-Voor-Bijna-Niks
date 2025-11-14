@@ -30,8 +30,8 @@ All colors MUST be HSL.
     --muted: 45 25% 95%;
     --muted-foreground: 210 15% 45%;
 
-    /* Warm Accent */
-    --accent: 25 75% 70%;
+    /* Warm Accent - Coral Pink */
+    --accent: 15 75% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,14 +41,17 @@ All colors MUST be HSL.
     --input: 45 20% 95%;
     --ring: 35 85% 55%;
 
-    /* Gradients */
+    /* Enhanced Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(35 85% 55%), hsl(25 75% 70%));
     --gradient-ocean: linear-gradient(180deg, hsl(205 85% 65%), hsl(215 80% 70%));
     --gradient-sunset: linear-gradient(90deg, hsl(35 85% 55%), hsl(15 75% 65%));
+    --gradient-coral: linear-gradient(135deg, hsl(15 75% 65%), hsl(25 70% 70%));
+    --gradient-warm: linear-gradient(135deg, hsl(45 85% 70%), hsl(35 80% 65%));
 
     /* Shadows */
     --shadow-warm: 0 10px 30px -10px hsl(35 85% 55% / 0.3);
     --shadow-soft: 0 4px 20px -4px hsl(210 15% 15% / 0.1);
+    --shadow-glow: 0 0 40px hsl(35 85% 55% / 0.2);
 
     /* Advanced Animations & Effects */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -126,5 +129,36 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary/20 text-primary;
   }
 }
