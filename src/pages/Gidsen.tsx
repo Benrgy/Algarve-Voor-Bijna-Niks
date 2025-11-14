@@ -5,6 +5,7 @@ import AlgarveInsights from '@/components/AlgarveInsights';
 import WhatToExpect from '@/components/WhatToExpect';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
+import { Link } from 'react-router-dom';
 
 const Gidsen = () => {
   const structuredData = {
@@ -170,6 +171,28 @@ const Gidsen = () => {
         {/* FAQ Section */}
         <section id="faq" className="py-12 px-4 bg-muted/20">
           <AlgarveFAQ />
+        </section>
+
+
+        {/* Popular Destinations Quick Links */}
+        <section className="py-12 px-4 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              Populaire Bestemmingen
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {['lagos', 'albufeira', 'faro', 'tavira', 'portimao', 'sagres', 'vilamoura', 'carvoeiro'].map((slug) => (
+                <Link key={slug} to={`/bestemmingen/${slug}`}>
+                  <Button
+                    variant="outline"
+                    className="h-auto py-4 text-left justify-start w-full hover:bg-primary/10 hover:border-primary transition-all"
+                  >
+                    📍 {slug.charAt(0).toUpperCase() + slug.slice(1)}
+                  </Button>
+                </Link>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Quick Tips */}
