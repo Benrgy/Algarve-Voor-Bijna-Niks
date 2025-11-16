@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      content_sources: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          type: string
+          url: string | null
+          verified: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          type: string
+          url?: string | null
+          verified?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          type?: string
+          url?: string | null
+          verified?: boolean | null
+        }
+        Relationships: []
+      }
       destination_images: {
         Row: {
           caption: string | null
@@ -67,6 +94,7 @@ export type Database = {
           best_for: string[] | null
           best_time_to_visit: string | null
           budget_tips: string | null
+          content_source_id: string | null
           created_at: string
           dining_scene: string | null
           hero_image: string | null
@@ -75,17 +103,24 @@ export type Database = {
           highlights: string[] | null
           historical_context: string | null
           id: string
+          last_updated_by: string | null
+          local_cuisine: string | null
+          local_stories: string | null
           luxury_options: string | null
           meta_description: string | null
           name: string
+          practical_tips: string | null
           published: boolean | null
           rating: number | null
           region: string
+          seasonal_activities: Json | null
           short_description: string | null
           slug: string
           title: string
           transportation: string | null
           updated_at: string
+          verified_at: string | null
+          verified_by: string | null
           visitor_count: string | null
         }
         Insert: {
@@ -96,6 +131,7 @@ export type Database = {
           best_for?: string[] | null
           best_time_to_visit?: string | null
           budget_tips?: string | null
+          content_source_id?: string | null
           created_at?: string
           dining_scene?: string | null
           hero_image?: string | null
@@ -104,17 +140,24 @@ export type Database = {
           highlights?: string[] | null
           historical_context?: string | null
           id?: string
+          last_updated_by?: string | null
+          local_cuisine?: string | null
+          local_stories?: string | null
           luxury_options?: string | null
           meta_description?: string | null
           name: string
+          practical_tips?: string | null
           published?: boolean | null
           rating?: number | null
           region: string
+          seasonal_activities?: Json | null
           short_description?: string | null
           slug: string
           title: string
           transportation?: string | null
           updated_at?: string
+          verified_at?: string | null
+          verified_by?: string | null
           visitor_count?: string | null
         }
         Update: {
@@ -125,6 +168,7 @@ export type Database = {
           best_for?: string[] | null
           best_time_to_visit?: string | null
           budget_tips?: string | null
+          content_source_id?: string | null
           created_at?: string
           dining_scene?: string | null
           hero_image?: string | null
@@ -133,20 +177,49 @@ export type Database = {
           highlights?: string[] | null
           historical_context?: string | null
           id?: string
+          last_updated_by?: string | null
+          local_cuisine?: string | null
+          local_stories?: string | null
           luxury_options?: string | null
           meta_description?: string | null
           name?: string
+          practical_tips?: string | null
           published?: boolean | null
           rating?: number | null
           region?: string
+          seasonal_activities?: Json | null
           short_description?: string | null
           slug?: string
           title?: string
           transportation?: string | null
           updated_at?: string
+          verified_at?: string | null
+          verified_by?: string | null
           visitor_count?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "destinations_content_source_id_fkey"
+            columns: ["content_source_id"]
+            isOneToOne: false
+            referencedRelation: "content_sources"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "destinations_last_updated_by_fkey"
+            columns: ["last_updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "destinations_verified_by_fkey"
+            columns: ["verified_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       expert_profiles: {
         Row: {
@@ -255,13 +328,16 @@ export type Database = {
       }
       posts: {
         Row: {
+          author_id: string | null
           category: string | null
           content: string | null
+          content_source_id: string | null
           created_at: string
           excerpt: string | null
           featured_image: string | null
           featured_image_alt: string | null
           id: string
+          last_updated_by: string | null
           meta_description: string | null
           meta_title: string | null
           published_at: string | null
@@ -269,15 +345,20 @@ export type Database = {
           status: string | null
           title: string
           updated_at: string
+          verified_at: string | null
+          verified_by: string | null
         }
         Insert: {
+          author_id?: string | null
           category?: string | null
           content?: string | null
+          content_source_id?: string | null
           created_at?: string
           excerpt?: string | null
           featured_image?: string | null
           featured_image_alt?: string | null
           id?: string
+          last_updated_by?: string | null
           meta_description?: string | null
           meta_title?: string | null
           published_at?: string | null
@@ -285,15 +366,20 @@ export type Database = {
           status?: string | null
           title: string
           updated_at?: string
+          verified_at?: string | null
+          verified_by?: string | null
         }
         Update: {
+          author_id?: string | null
           category?: string | null
           content?: string | null
+          content_source_id?: string | null
           created_at?: string
           excerpt?: string | null
           featured_image?: string | null
           featured_image_alt?: string | null
           id?: string
+          last_updated_by?: string | null
           meta_description?: string | null
           meta_title?: string | null
           published_at?: string | null
@@ -301,6 +387,85 @@ export type Database = {
           status?: string | null
           title?: string
           updated_at?: string
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_content_source_id_fkey"
+            columns: ["content_source_id"]
+            isOneToOne: false
+            referencedRelation: "content_sources"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_last_updated_by_fkey"
+            columns: ["last_updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_verified_by_fkey"
+            columns: ["verified_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -309,10 +474,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -439,6 +610,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
