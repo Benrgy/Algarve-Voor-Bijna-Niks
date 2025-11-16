@@ -10,6 +10,7 @@ import { InsiderTipCard } from "@/components/InsiderTipCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import QuickActionBar from "@/components/QuickActionBar";
 import CTASection from "@/components/CTASection";
+import { VerificationBadge } from "@/components/VerificationBadge";
 import { Star, Users, MapPin, Calendar, TrendingUp, Euro } from "lucide-react";
 import { resolveDestinationHeroImage } from "@/utils/imageResolver";
 import defaultHero from "@/assets/algarve-hero-beach.jpg";
@@ -39,6 +40,15 @@ interface Destination {
   visitor_count?: string;
   best_for?: string[];
   highlights?: string[];
+  verified_by?: string | null;
+  verified_at?: string | null;
+  local_stories?: string | null;
+  local_cuisine?: string | null;
+  practical_tips?: string | null;
+  content_sources?: {
+    name: string;
+    url: string | null;
+  } | null;
 }
 
 interface ExpertProfile {
@@ -79,10 +89,16 @@ export default function Destination() {
       // Fetch destination
       const { data: destData } = await supabase
         .from("destinations")
-        .select("*")
+        .select(`
+          *,
+          content_sources (
+            name,
+            url
+          )
+        `)
         .eq("slug", slug)
         .eq("published", true)
-        .single();
+        .maybeSingle();
 
       if (destData) {
         setDestination(destData);
@@ -157,7 +173,7 @@ export default function Destination() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-end pb-12">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
               <Badge variant="secondary" className="flex items-center gap-1">
                 <MapPin className="w-3 h-3" />
                 {destination.region}
@@ -168,6 +184,12 @@ export default function Destination() {
                   {destination.rating}
                 </Badge>
               )}
+              <VerificationBadge 
+                verifiedBy={destination.verified_by || undefined}
+                verifiedAt={destination.verified_at || undefined}
+                sourceName={destination.content_sources?.name}
+                sourceUrl={destination.content_sources?.url || undefined}
+              />
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               {destination.name}
@@ -288,6 +310,46 @@ export default function Destination() {
                 <div className="prose prose-lg max-w-none">
                   <p className="text-muted-foreground whitespace-pre-line">
                     {destination.dining_scene}
+                  </p>
+                </div>
+              </section>
+            )}
+
+            {/* Local Cuisine */}
+            {destination.local_cuisine && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Lokale Keuken</h2>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-muted-foreground whitespace-pre-line">
+                    {destination.local_cuisine}
+                  </p>
+                </div>
+              </section>
+            )}
+
+            {/* Local Stories */}
+            {destination.local_stories && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Verhalen van Locals</h2>
+                <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+                  <CardContent className="p-6">
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-muted-foreground whitespace-pre-line italic">
+                        {destination.local_stories}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </section>
+            )}
+
+            {/* Practical Tips */}
+            {destination.practical_tips && (
+              <section>
+                <h2 className="text-3xl font-bold mb-6">Praktische Tips</h2>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-muted-foreground whitespace-pre-line">
+                    {destination.practical_tips}
                   </p>
                 </div>
               </section>
