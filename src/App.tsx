@@ -19,6 +19,10 @@ import BlogPost from "./pages/BlogPost";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDestinations from "./pages/AdminDestinations";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import CookiePolicy from "./pages/CookiePolicy";
+import Disclaimer from "./pages/Disclaimer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +50,10 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/destinations" element={<AdminDestinations />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/voorwaarden" element={<Terms />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -11,11 +11,11 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: '/', label: 'Home', icon: '🏠' },
-    { href: '/bestemmingen', label: 'Bestemmingen', icon: '🏖️' },
-    { href: '/deals', label: 'Deals & Prijzen', icon: '💰' },
-    { href: '/gidsen', label: 'Reisgidsen', icon: '📖' },
-    { href: '/blog', label: 'Blog', icon: '✍️' },
+    { href: '/', label: 'Home' },
+    { href: '/bestemmingen', label: 'Bestemmingen' },
+    { href: '/deals', label: 'Deals & Prijzen' },
+    { href: '/gidsen', label: 'Reisgidsen' },
+    { href: '/blog', label: 'Blog' },
   ];
 
   return (
@@ -45,7 +45,6 @@ const Navigation = () => {
                         "flex items-center gap-2 font-medium transition-all duration-200"
                       )}
                     >
-                      <span>{item.icon}</span>
                       {item.label}
                     </Link>
                   </NavigationMenuLink>
@@ -77,26 +76,25 @@ const Navigation = () => {
                           : "text-foreground hover:bg-accent hover:text-accent-foreground"
                       )}
                     >
-                      <span className="text-xl">{item.icon}</span>
                       {item.label}
                     </Link>
                   ))}
                   <div className="mt-8 pt-6 border-t border-border">
                     <div className="text-sm text-muted-foreground mb-3">Snelle links</div>
                     <div className="flex flex-col gap-2">
-                      <Link 
+                     <Link 
                         to="/deals" 
                         onClick={() => setIsOpen(false)}
                         className="text-sm text-primary hover:underline"
                       >
-                        🎯 Beste Deals van Nu
+                        Beste Deals van Nu
                       </Link>
                       <Link 
                         to="/gidsen" 
                         onClick={() => setIsOpen(false)}
                         className="text-sm text-secondary hover:underline"
                       >
-                        📖 Insider Tips & Gidsen
+                        Insider Tips & Gidsen
                       </Link>
                     </div>
                   </div>

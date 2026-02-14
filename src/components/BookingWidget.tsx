@@ -36,17 +36,8 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
       selected_currency: 'EUR'
     });
 
-    // Affiliate links - Add your actual affiliate IDs when you have them
-    const bookingUrl = `https://www.booking.com/searchresults.html?${params}&aid=YOUR_BOOKING_AFFILIATE_ID`;
-    const airbnbUrl = `https://www.airbnb.nl/s/${encodeURIComponent(destination)}/homes?checkin=${checkIn}&checkout=${checkOut}&adults=${guests}`;
-    
-    // Open primary booking platform
+    const bookingUrl = `https://www.booking.com/searchresults.html?${params}`;
     window.open(bookingUrl, '_blank', 'noopener,noreferrer');
-    
-    // Optional: Open secondary platform after a delay
-    setTimeout(() => {
-      window.open(airbnbUrl, '_blank', 'noopener,noreferrer');
-    }, 500);
   };
 
   return (

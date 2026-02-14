@@ -30,11 +30,11 @@ const Gidsen = () => {
               Algarve Reisgidsen
             </h1>
             <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-white/90">
-              📖 Insider tips van locals die de Algarve als hun broekzak kennen
+              Insider tips van locals die de Algarve als hun broekzak kennen
             </p>
             <div className="bg-black/20 backdrop-blur-md rounded-xl p-4 max-w-xl mx-auto border border-white/20">
               <p className="text-sm mb-2">
-                🎯 <strong>Geschreven door locals</strong> - Bespaar honderden euro's
+                <strong>Geschreven door locals</strong> — Bespaar honderden euro's
               </p>
               <div className="flex flex-wrap justify-center gap-3 text-xs">
                 <span>✅ Altijd actueel</span>

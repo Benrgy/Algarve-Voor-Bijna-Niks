@@ -31,22 +31,22 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link to="/bestemmingen" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  🏖️ Bestemmingen
+                  Bestemmingen
                 </Link>
               </li>
               <li>
                 <Link to="/deals" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  💰 Deals & Prijzen
+                  Deals & Prijzen
                 </Link>
               </li>
               <li>
                 <Link to="/gidsen" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  📖 Reisgidsen
+                  Reisgidsen
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  ✍️ Blog
+                  Blog
                 </Link>
               </li>
             </ul>
@@ -118,13 +118,13 @@ export default function Footer() {
               © {new Date().getFullYear()} Algarve voor Bijna Niks. Alle rechten voorbehouden.
             </div>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
               <span>•</span>
-              <a href="#" className="hover:text-primary transition-colors">Voorwaarden</a>
+              <Link to="/voorwaarden" className="hover:text-primary transition-colors">Voorwaarden</Link>
               <span>•</span>
-              <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+              <Link to="/cookies" className="hover:text-primary transition-colors">Cookie Policy</Link>
               <span>•</span>
-              <a href="#" className="hover:text-primary transition-colors">Disclaimer</a>
+              <Link to="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
             </div>
           </div>
           <div className="mt-4 text-center text-xs text-muted-foreground">

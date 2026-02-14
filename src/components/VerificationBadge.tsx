@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface VerificationBadgeProps {
@@ -15,56 +15,35 @@ export const VerificationBadge = ({
   sourceName,
   sourceUrl 
 }: VerificationBadgeProps) => {
-  const isVerified = !!verifiedBy;
+  // Only show badge when content IS verified
+  if (!verifiedBy) return null;
 
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <Badge 
-            variant={isVerified ? "default" : "secondary"}
-            className="gap-1"
-          >
-            {isVerified ? (
-              <>
-                <CheckCircle2 className="w-3 h-3" />
-                Geverifieerd
-              </>
-            ) : (
-              <>
-                <AlertCircle className="w-3 h-3" />
-                Niet geverifieerd
-              </>
-            )}
+          <Badge variant="default" className="gap-1">
+            <CheckCircle2 className="w-3 h-3" />
+            Geverifieerd
           </Badge>
         </TooltipTrigger>
         <TooltipContent>
           <div className="space-y-1">
-            {isVerified ? (
-              <>
-                <p className="font-semibold">✓ Content geverifieerd</p>
-                {verifiedAt && (
-                  <p className="text-xs">
-                    {new Date(verifiedAt).toLocaleDateString('nl-NL', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </p>
-                )}
-                {sourceName && (
-                  <p className="text-xs">
-                    Bron: {sourceUrl ? (
-                      <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="underline">
-                        {sourceName}
-                      </a>
-                    ) : sourceName}
-                  </p>
-                )}
-              </>
-            ) : (
+            <p className="font-semibold">✓ Content geverifieerd</p>
+            {verifiedAt && (
               <p className="text-xs">
-                Deze content is nog niet geverifieerd door een expert
+                {new Date(verifiedAt).toLocaleDateString('nl-NL', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </p>
+            )}
+            {sourceName && (
+              <p className="text-xs">
+                Bron: {sourceUrl ? (
+                  <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    {sourceName}
+                  </a>
+                ) : sourceName}
               </p>
             )}
           </div>
