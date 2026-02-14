@@ -2,11 +2,12 @@ import React from 'react';
 import { Button } from '@/components/ui/enhanced-button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { MapPin, Tag, BookOpen } from 'lucide-react';
 import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 import TrustSignals from '@/components/TrustSignals';
 import BookingWidget from '@/components/BookingWidget';
 import WeatherWidget from '@/components/WeatherWidget';
-import AIAssistant from '@/components/AIAssistant';
+
 import FeaturedDestinationsPreview from '@/components/FeaturedDestinationsPreview';
 import AffiliateServices from '@/components/AffiliateServices';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -56,7 +57,7 @@ const Index = () => {
         
         {/* Enhanced Hero Section */}
         <header 
-          className="relative py-16 md:py-24 px-4 text-center overflow-hidden min-h-screen flex items-center"
+          className="relative py-16 md:py-24 px-4 text-center overflow-hidden min-h-[70vh] md:min-h-screen flex items-center"
           style={{
             backgroundImage: `url(${algarveHeroBeach})`,
             backgroundSize: 'cover',
@@ -75,15 +76,15 @@ const Index = () => {
           <div className="relative z-20 max-w-5xl mx-auto">
             <div className="mb-8 space-y-3">
               <div className="flex flex-wrap justify-center gap-3 mb-4">
-                <span className="inline-block bg-emerald-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
-                  🏆 #1 Goedkoopste Algarve Deals
+                <span className="inline-block bg-primary/90 backdrop-blur-sm text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
+                  #1 Goedkoopste Algarve Deals
                 </span>
-                <span className="inline-block bg-blue-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
-                  🌊 Authentieke Lokale Ervaringen
+                <span className="inline-block bg-secondary/90 backdrop-blur-sm text-secondary-foreground px-4 py-2 rounded-full text-sm font-semibold border border-white/20 shadow-warm">
+                  Authentieke Lokale Ervaringen
                 </span>
               </div>
             <p className="text-white/90 text-sm font-medium">
-              🌱 Nieuwe site met lokale kennis | 💼 Vind deals via affiliate partners | 🏖️ 60+ bestemmingen
+              Nieuwe site met lokale kennis · Vind deals via affiliate partners · 60+ bestemmingen
             </p>
             </div>
             
@@ -96,7 +97,7 @@ const Index = () => {
             
             <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 mb-8 border border-white/20 shadow-2xl max-w-4xl mx-auto">
               <p className="text-xl md:text-2xl text-white/95 mb-4 leading-relaxed">
-                🇳🇱 <strong>Exclusief voor Nederlanders:</strong> Ontdek geheime insider-deals en lokale tips 
+                <strong>Exclusief voor Nederlanders:</strong> Ontdek geheime insider-deals en lokale tips
                 die je €500+ kunnen besparen op jouw Algarve-avontuur
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-white/85">
@@ -110,18 +111,18 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <Link to="/deals">
                 <Button variant="cta" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
-                  🎯 Ontdek Beste Deals
+                  Ontdek Beste Deals
                 </Button>
               </Link>
               <Link to="/bestemmingen">
                 <Button variant="secondary" size="xl" className="backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-8 py-4">
-                  🏖️ Bekijk Bestemmingen
+                  Bekijk Bestemmingen
                 </Button>
               </Link>
             </div>
             <div className="text-center mb-6">
               <p className="text-white/95 text-sm drop-shadow-md font-semibold">
-                💡 <span className="text-accent">Insider Tips:</span> Bespaar honderden euro's
+                <span className="text-accent">Insider Tips:</span> Bespaar honderden euro's
               </p>
               <p className="text-white/80 text-xs">Met lokale kennis en slimme planning</p>
             </div>
@@ -129,13 +130,13 @@ const Index = () => {
             {/* Trust indicators */}
             <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
               <div className="flex items-center gap-2">
-                <span>🌟 Lokale Gidsen & Tips</span>
+                <span>Lokale Gidsen & Tips</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>🔒 SSL Beveiligd</span>
+                <span>SSL Beveiligd</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>📞 24/7 Nederlands Support</span>
+                <span>24/7 Nederlands Support</span>
               </div>
             </div>
           </div>
@@ -205,7 +206,7 @@ const Index = () => {
               <Link to="/bestemmingen" className="group">
                 <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
                   <CardContent className="p-8 text-center">
-                    <div className="text-5xl mb-4">🏖️</div>
+                    <div className="text-5xl mb-4"><MapPin className="w-12 h-12 text-primary mx-auto" /></div>
                     <h3 className="text-2xl font-bold mb-4 text-primary">Bestemmingen</h3>
                     <p className="text-muted-foreground mb-4">
                       Ontdek de mooiste stranden, steden en verborgen parels van de Algarve
@@ -220,7 +221,7 @@ const Index = () => {
               <Link to="/deals" className="group">
                 <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
                   <CardContent className="p-8 text-center">
-                    <div className="text-5xl mb-4">💰</div>
+                    <div className="text-5xl mb-4"><Tag className="w-12 h-12 text-secondary mx-auto" /></div>
                     <h3 className="text-2xl font-bold mb-4 text-secondary">Deals & Prijzen</h3>
                     <p className="text-muted-foreground mb-4">
                       Vergelijk prijzen en vind de beste deals voor jouw droomvakantie
@@ -235,7 +236,7 @@ const Index = () => {
               <Link to="/gidsen" className="group">
                 <Card className="border-0 shadow-soft hover:shadow-warm transition-all duration-300 group-hover:scale-105">
                   <CardContent className="p-8 text-center">
-                    <div className="text-5xl mb-4">📖</div>
+                    <div className="text-5xl mb-4"><BookOpen className="w-12 h-12 text-accent mx-auto" /></div>
                     <h3 className="text-2xl font-bold mb-4 text-accent">Reisgidsen</h3>
                     <p className="text-muted-foreground mb-4">
                       Insider tips, lokale geheimen en praktische reisinformatie
@@ -262,7 +263,6 @@ const Index = () => {
 
         {/* Trust Signals & AI Assistant */}
         <TrustSignals />
-        <AIAssistant />
       </div>
     </>
   );

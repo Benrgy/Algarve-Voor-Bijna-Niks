@@ -29,7 +29,7 @@ const Deals = () => {
               Beste Algarve Deals
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
-              💰 Vergelijk prijzen en bespaar honderden euro's op jouw droomvakantie
+              Vergelijk prijzen en bespaar honderden euro's op jouw droomvakantie
             </p>
             <div className="bg-black/20 backdrop-blur-md rounded-2xl p-6 max-w-2xl mx-auto border border-white/20">
               <p className="text-lg mb-4">
