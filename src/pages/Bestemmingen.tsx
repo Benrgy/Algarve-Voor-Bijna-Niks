@@ -7,7 +7,9 @@ import { FeaturedInsiderTips } from '@/components/FeaturedInsiderTips';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SectionNav from '@/components/SectionNav';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Waves, Landmark, UtensilsCrossed } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+import algarveSunsetBeach from '@/assets/algarve-sunset-beach.jpg';
 
 const Bestemmingen = () => {
   const structuredData = {
@@ -26,39 +28,27 @@ const Bestemmingen = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="bg-gradient-to-r from-primary via-secondary to-accent py-16 text-white">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6">
-              Algarve Bestemmingen
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
-              🏖️ Ontdek de verborgen parels van Portugal's mooiste kuststreek
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl mb-2">🌊</div>
-                  <h3 className="font-bold mb-2">150+ Stranden</h3>
-                  <p className="text-sm text-white/80">Van verborgen baaien tot levendige resorts</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl mb-2">🏛️</div>
-                  <h3 className="font-bold mb-2">Rijke Geschiedenis</h3>
-                  <p className="text-sm text-white/80">Duizenden jaren cultuur en tradities</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl mb-2">🍽️</div>
-                  <h3 className="font-bold mb-2">Lokale Keuken</h3>
-                  <p className="text-sm text-white/80">Verse zeevruchten en authentieke smaken</p>
-                </CardContent>
-              </Card>
+        <PageHero
+          image={algarveSunsetBeach}
+          imageAlt="Zonsondergang bij de Algarve kust"
+          title="Algarve Bestemmingen"
+          subtitle="Ontdek de verborgen parels van Portugal's mooiste kuststreek"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-4">
+            <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+              <Waves className="w-5 h-5" />
+              <span className="text-sm font-medium">150+ Stranden</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+              <Landmark className="w-5 h-5" />
+              <span className="text-sm font-medium">Rijke Geschiedenis</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/20">
+              <UtensilsCrossed className="w-5 h-5" />
+              <span className="text-sm font-medium">Lokale Keuken</span>
             </div>
           </div>
-        </header>
+        </PageHero>
 
         <SectionNav items={[
           { href: '#kaart', label: 'Kaart' },

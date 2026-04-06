@@ -5,6 +5,9 @@ import LocalExperiences from '@/components/LocalExperiences';
 import WeatherWidget from '@/components/WeatherWidget';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
+import { Check } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+import algarveBeachResort from '@/assets/algarve-beach-resort.jpg';
 
 const Deals = () => {
   const structuredData = {
@@ -23,26 +26,23 @@ const Deals = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="bg-gradient-to-br from-primary via-accent to-secondary py-16 text-white">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6">
-              Beste Algarve Deals
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
-              Vergelijk prijzen en bespaar honderden euro's op jouw droomvakantie
+        <PageHero
+          image={algarveBeachResort}
+          imageAlt="Luxe resort aan het strand van de Algarve"
+          title="Beste Algarve Deals"
+          subtitle="Vergelijk prijzen en bespaar honderden euro's op jouw droomvakantie"
+        >
+          <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 max-w-2xl mx-auto border border-white/20 mt-2">
+            <p className="text-lg mb-3">
+              <strong>Gemiddelde besparing:</strong> €312 per vakantie
             </p>
-            <div className="bg-black/20 backdrop-blur-md rounded-2xl p-6 max-w-2xl mx-auto border border-white/20">
-              <p className="text-lg mb-4">
-                🎯 <strong>Gemiddelde besparing:</strong> €312 per vakantie
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span>✅ Geen boekingskosten</span>
-                <span>✅ Gratis annulering</span>
-                <span>✅ Beste prijsgarantie</span>
-              </div>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <span className="flex items-center gap-1"><Check className="w-4 h-4" /> Geen boekingskosten</span>
+              <span className="flex items-center gap-1"><Check className="w-4 h-4" /> Gratis annulering</span>
+              <span className="flex items-center gap-1"><Check className="w-4 h-4" /> Beste prijsgarantie</span>
             </div>
           </div>
-        </header>
+        </PageHero>
 
         {/* Quick Stats */}
         <section className="py-12 bg-muted/30">
