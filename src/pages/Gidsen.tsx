@@ -6,6 +6,9 @@ import WhatToExpect from '@/components/WhatToExpect';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
 import { Link } from 'react-router-dom';
+import { Check } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+import algarveCoastalRoad from '@/assets/algarve-coastal-road.jpg';
 
 const Gidsen = () => {
   const structuredData = {
