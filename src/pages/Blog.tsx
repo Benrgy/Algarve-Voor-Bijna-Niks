@@ -62,32 +62,24 @@ const Blog = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="relative bg-gradient-to-br from-primary via-accent to-secondary py-20 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]"></div>
-          <div className="relative max-w-7xl mx-auto px-4 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-              <BookOpen className="w-4 h-4" />
-              <span className="text-sm font-medium">Lokale Insider Knowledge</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black mb-6">
-              Algarve Reisgidsen & Tips
-            </h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 mb-8">
-              📚 Ontdek de beste lokale geheimen, reistips en insider informatie rechtstreeks van Algarve experts
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                ✅ Geschreven door locals
-              </span>
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                ✅ Wekelijks nieuwe content
-              </span>
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                ✅ Gratis toegang
-              </span>
-            </div>
+        <PageHero
+          image={algarveLocalMarket}
+          imageAlt="Lokale markt in de Algarve"
+          title="Algarve Reisgidsen & Tips"
+          subtitle="Ontdek de beste lokale geheimen, reistips en insider informatie rechtstreeks van Algarve experts"
+        >
+          <div className="flex flex-wrap justify-center gap-3 text-sm mt-2">
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Geschreven door locals
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Wekelijks nieuwe content
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Gratis toegang
+            </span>
           </div>
-        </header>
+        </PageHero>
 
         <div className="container mx-auto px-4 py-16">
           {loading ? (

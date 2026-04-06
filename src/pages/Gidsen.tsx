@@ -27,26 +27,24 @@ const Gidsen = () => {
       
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <header className="bg-gradient-to-r from-secondary via-primary to-accent py-12 text-white">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-5xl font-black mb-4">
-              Algarve Reisgidsen
-            </h1>
-            <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-white/90">
-              Insider tips van locals die de Algarve als hun broekzak kennen
-            </p>
-            <div className="bg-black/20 backdrop-blur-md rounded-xl p-4 max-w-xl mx-auto border border-white/20">
-              <p className="text-sm mb-2">
-                <strong>Geschreven door locals</strong> — Bespaar honderden euro's
-              </p>
-              <div className="flex flex-wrap justify-center gap-3 text-xs">
-                <span>✅ Altijd actueel</span>
-                <span>✅ Getest door locals</span>
-                <span>✅ Gratis toegang</span>
-              </div>
-            </div>
+        <PageHero
+          image={algarveCoastalRoad}
+          imageAlt="Kustweg langs de Algarve kliffen"
+          title="Algarve Reisgidsen"
+          subtitle="Insider tips van locals die de Algarve als hun broekzak kennen"
+        >
+          <div className="flex flex-wrap justify-center gap-3 text-sm mt-2">
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Altijd actueel
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Getest door locals
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+              <Check className="w-4 h-4" /> Gratis toegang
+            </span>
           </div>
-        </header>
+        </PageHero>
 
         {/* Guide Categories */}
         <section className="py-8 px-4">
