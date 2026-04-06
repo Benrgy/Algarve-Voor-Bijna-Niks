@@ -5,6 +5,9 @@ import LocalExperiences from '@/components/LocalExperiences';
 import WeatherWidget from '@/components/WeatherWidget';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/enhanced-button';
+import { Check } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+import algarveBeachResort from '@/assets/algarve-beach-resort.jpg';
 
 const Deals = () => {
   const structuredData = {
