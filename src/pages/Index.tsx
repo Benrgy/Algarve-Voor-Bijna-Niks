@@ -14,6 +14,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import PhotoShowcase from '@/components/PhotoShowcase';
 import CTASection from '@/components/CTASection';
+import AIAssistant from '@/components/AIAssistant';
 
 
 const Index = () => {
@@ -264,6 +265,7 @@ const Index = () => {
         {/* Trust Signals & AI Assistant */}
         <TrustSignals />
       </div>
+      <AIAssistant />
     </>
   );
 };
