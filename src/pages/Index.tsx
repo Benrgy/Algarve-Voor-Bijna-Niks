@@ -265,6 +265,7 @@ const Index = () => {
         {/* Trust Signals & AI Assistant */}
         <TrustSignals />
       </div>
+      <AIAssistant />
     </>
   );
 };
