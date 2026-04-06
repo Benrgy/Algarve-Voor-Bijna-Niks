@@ -7,7 +7,9 @@ import { FeaturedInsiderTips } from '@/components/FeaturedInsiderTips';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SectionNav from '@/components/SectionNav';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Waves, Landmark, UtensilsCrossed } from 'lucide-react';
+import PageHero from '@/components/PageHero';
+import algarveSunsetBeach from '@/assets/algarve-sunset-beach.jpg';
 
 const Bestemmingen = () => {
   const structuredData = {
