@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://algarve-voor-bijna-niks.netlify.app/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+Sitemap: https://benrgy.github.io/Algarve-Voor-Bijna-Niks/sitemap.xml
