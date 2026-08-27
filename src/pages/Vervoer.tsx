@@ -1,120 +1,142 @@
-import React from 'react';
-import PageHero from '@/components/PageHero';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/enhanced-button';
-import { Bus, Train, Car, MapPin, ArrowRight } from 'lucide-react';
-import algarveCoastalRoad from '@/assets/algarve-coastal-road.jpg';
+import PageHeader from '@/components/site/PageHeader';
+import { Section, InfoCard, Callout, PriceRow } from '@/components/site/Section';
+import heroImg from '@/assets/algarve-coastal-road.jpg';
 
-const Vervoer = () => {
+const trainPrices = [
+  { label: 'Faro → Lagos', price: '€5,25' },
+  { label: 'Faro → Portimão', price: '€4,10' },
+  { label: 'Faro → Tavira', price: '€2,60' },
+  { label: 'Lissabon → Faro', price: '€20–25' },
+];
+
+const travelerTypes = [
+  {
+    emoji: '🧍',
+    title: 'Solo',
+    text: 'Trein en bus zijn ideaal. Goedkoop, sociaal en geen zorgen over parkeren. Huur alleen een auto voor de N125-dagtrip.',
+  },
+  {
+    emoji: '💑',
+    title: 'Koppel',
+    text: 'Een huurauto voor een paar dagen loont snel. Deel de kosten (±€110 p.p. voor 10 dagen) en ontdek verborgen stranden.',
+  },
+  {
+    emoji: '👨‍👩‍👧‍👦',
+    title: 'Gezin',
+    text: 'Auto huren is de goedkoopste én makkelijkste optie. Kies een appartement met keuken en rijd op eigen tempo.',
+  },
+  {
+    emoji: '🎒',
+    title: 'Backpacker',
+    text: 'Bus (Vamus) en trein brengen je overal. Combineer met hostels en je reist de hele Algarve voor bijna niks.',
+  },
+];
+
+export default function Vervoer() {
   return (
-    <div className="min-h-screen bg-background">
-      <PageHero
-        image={algarveCoastalRoad}
-        imageAlt="Kustweg in de Algarve met uitzicht over de Atlantische Oceaan"
-        title="Vervoer in de Algarve"
-        subtitle="Bus, trein, huurauto of fiets? Ontdek de beste manier om de Algarve te verkennen zonder te veel uit te geven."
+    <main className="pt-16">
+      <PageHeader
+        image={heroImg}
+        eyebrow="Vervoer"
+        title="Zo kom je overal in de Algarve"
+        intro={
+          <p>
+            Je hebt geen dure taxi's of georganiseerde tours nodig. De Algarve is
+            perfect te doen met een goedkope huurauto, de trein langs de kust of
+            de lokale bus. Hieronder alles wat je moet weten — inclusief de echte
+            prijzen.
+          </p>
+        }
       />
 
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-primary/10 text-primary border-primary/20">
-              <Bus className="w-4 h-4 mr-2" />
-              Vervoer
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Zo kom je overal in de Algarve
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              De Algarve heeft een goed bus- en treinnetwerk langs de kust. Voor de verborgen stranden en dorpjes is een huurauto echter onmisbaar.
+      <Section
+        title="Auto huren"
+        intro="Voor de N125-route en verborgen dorpjes is een auto onverslaanbaar. Met deze tips betaal je nooit te veel."
+      >
+        <div className="space-y-4">
+          <Callout title="Vergelijk vooraf">
+            <p>
+              Boek via een vergelijker zoals <strong>Discovercars</strong> en
+              reserveer weken van tevoren. Buiten het seizoen betaal je vaak
+              €15–25 per dag; wij reden 10 dagen voor €220 totaal.
             </p>
+          </Callout>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoCard emoji="🛣️" title="N125 vs. A22">
+              <p>
+                De <strong>N125</strong> is gratis, schilderachtig en voert door
+                elk dorp. De <strong>A22</strong> (snelweg) is inmiddels óók
+                tolvrij en snel als je afstand moet overbruggen.
+              </p>
+            </InfoCard>
+            <InfoCard emoji="🛡️" title="Neem de volledige verzekering">
+              <p>
+                Een all-risk (full insurance) kost een paar euro per dag extra,
+                maar voorkomt torenhoge borgstellingen en gedoe bij een krasje.
+                Altijd doen.
+              </p>
+            </InfoCard>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <Card className="border-0 shadow-soft">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <Bus className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Bus vanaf Faro Airport</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  De bus van Faro Airport naar het centrum kost slechts €2,25. Dat is een flink stuk goedkoper dan een taxi, die voor hetzelfde traject ongeveer €25 rekent.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Vervoerder: Proximo / Vamus. Controleer actuele dienstregelingen voor vertrek.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-soft">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-full bg-secondary/10">
-                    <Train className="w-6 h-6 text-secondary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Trein langs de kust</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  De trein van Faro naar Lagos is een van de mooiste routes van Portugal. De rit duurt ongeveer 1,5 uur en kost €5,25. Onderweg stop je in Tavira, Olhão en Portimão.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Ideaal voor een dagtrip langs de oostkust zonder files of parkeerstress.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-soft">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-full bg-accent/10">
-                    <Car className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-bold">Huurauto</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Met een huurauto ontdek je de Algarve het beste. Wij huurden zelf tien dagen een auto voor ongeveer €220 buiten het hoogseizoen. Hiermee reden we de hele N125 van oost naar west.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Boek ruim van tevoren en neem volledige verzekering om verrassingen te voorkomen.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-soft">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-full bg-green-100 dark:bg-green-900/20">
-                    <MapPin className="w-6 h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-xl font-bold">De N125-route</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  De N125 is de provinciale weg die parallel aan de kust loopt. Deze weg brengt je langs alle kleine dorpjes, lokale restaurants en verborgen stranden die je van de snelweg niet ziet.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Soms file in juli/augustus, maar altijd avontuurlijk en authentiek.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="bg-muted/30 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Vergelijk huurauto's</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Een auto geeft de meeste vrijheid. Bekijk prijzen van verschillende verhuurders via onze partners.
+          <Callout title="Maak foto's bij ophalen" tone="warning">
+            <p>
+              Fotografeer de auto rondom vóór je wegrijdt — inclusief bestaande
+              krassen en de brandstofmeter. Zo voorkom je discussies bij het
+              inleveren.
             </p>
-            <Button variant="cta" size="lg" onClick={() => window.location.href = '/deals'}>
-              Bekijk autohuur-deals
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </div>
+          </Callout>
         </div>
-      </section>
-    </div>
-  );
-};
+      </Section>
 
-export default Vervoer;
+      <Section title="Trein" muted intro="De kustlijn per trein is spotgoedkoop én prachtig. De lijn Lagos–Faro is een belevenis op zich.">
+        <div className="bg-card rounded-2xl border border-border p-6 shadow-soft">
+          {trainPrices.map((t) => (
+            <PriceRow key={t.label} label={t.label} price={t.price} />
+          ))}
+        </div>
+        <p className="mt-4 text-muted-foreground">
+          Kaartjes koop je gewoon aan het loket of de automaat op het station.
+          Reserveren hoeft niet voor de regionale treinen langs de kust.
+        </p>
+      </Section>
+
+      <Section title="Bus (Vamus)" intro="Het busnetwerk Vamus verbindt alle grote plaatsen. Perfect als je geen auto wilt.">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <InfoCard emoji="🚌" title="Vliegveldbus: €2,25">
+            <p>
+              De bus vanaf Faro Airport naar het centrum kost{' '}
+              <strong>€2,25</strong> — een taxi vraagt €20–30 voor exact hetzelfde
+              stukje. De keuze is snel gemaakt.
+            </p>
+          </InfoCard>
+          <InfoCard emoji="🚍" title="Flixbus vanuit Nederland">
+            <p>
+              Wil je zonder vliegen? <strong>Flixbus</strong> rijdt vanuit
+              Nederland en België richting Portugal en Sevilla — de goedkoopste
+              (maar langste) manier om te komen.
+            </p>
+          </InfoCard>
+        </div>
+      </Section>
+
+      <Section title="Uber & Bolt" muted intro="Voor korte ritjes binnen een stad — bijvoorbeeld 's avonds naar een restaurant — zijn Uber en Bolt handig en goedkoop.">
+        <Callout tone="secondary">
+          <p>
+            Reken op <strong>€8–12</strong> vanaf Faro Airport naar het centrum
+            met Bolt of Uber. Prima als je 's avonds laat aankomt en de bus niet
+            meer rijdt. Voor langere afstanden blijft de auto of trein voordeliger.
+          </p>
+        </Callout>
+      </Section>
+
+      <Section title="Welk vervoer past bij jou?" intro="Kort advies per type reiziger.">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {travelerTypes.map((t) => (
+            <InfoCard key={t.title} emoji={t.emoji} title={t.title}>
+              <p>{t.text}</p>
+            </InfoCard>
+          ))}
+        </div>
+      </Section>
+    </main>
+  );
+}
