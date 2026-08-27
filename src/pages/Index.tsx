@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Plane, Tent, Bus, ArrowRight } from 'lucide-react';
+import SEO from '@/components/site/SEO';
 import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 import coastalRoad from '@/assets/destinations/tavira-hero.jpg';
 import n125Road from '@/assets/algarve-coastal-road.jpg';
@@ -70,6 +71,11 @@ const heroButtons = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Algarve voor Bijna Niks – Eerlijke reisgids voor budgetreizigers"
+        description="Ontdek de echte Algarve zonder massa-toerisme en zonder kapitaal uit te geven. Onze eerlijke gids voor kampeerders, backpackers en slimme reizigers."
+        url="/"
+      />
       {/* Hero */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <img
