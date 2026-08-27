@@ -14,7 +14,7 @@ import Destination from "./pages/Destination";
 import Deals from "./pages/Deals";
 import Gidsen from "./pages/Gidsen";
 import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
+import BlogArtikel from "./pages/BlogArtikel";
 import Vliegen from "./pages/Vliegen";
 import Logeren from "./pages/Logeren";
 import Vervoer from "./pages/Vervoer";
@@ -56,7 +56,7 @@ const App = () => (
               <Route path="/deals" element={<Deals />} />
               <Route path="/gidsen" element={<Gidsen />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/blog/:slug" element={<BlogArtikel />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/destinations" element={<AdminDestinations />} />

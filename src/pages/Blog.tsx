@@ -1,201 +1,212 @@
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, BookOpen, Check } from "lucide-react";
-import { format } from "date-fns";
-import { nl } from "date-fns/locale";
-import { Skeleton } from "@/components/ui/skeleton";
-import PageHero from "@/components/PageHero";
-import algarveLocalMarket from "@/assets/algarve-local-market.jpg";
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { Clock, ArrowRight, Calendar } from 'lucide-react';
+import { format } from 'date-fns';
+import { nl } from 'date-fns/locale';
+import { cn } from '@/lib/utils';
+import PageHeader from '@/components/site/PageHeader';
+import {
+  artikelen,
+  categorieLabels,
+  type ArtikelCategorie,
+  type Artikel,
+} from '@/data/artikelen';
+import heroImg from '@/assets/algarve-local-market.jpg';
 
-interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  category: string;
-  featured_image: string;
-  featured_image_alt: string;
-  published_at: string;
-  created_at: string;
+type Filter = 'alle' | ArtikelCategorie;
+
+const filters: { key: Filter; label: string }[] = [
+  { key: 'alle', label: 'Alle' },
+  { key: 'bestemmingen', label: 'Bestemmingen' },
+  { key: 'praktisch', label: 'Praktisch' },
+  { key: 'verhalen', label: 'Verhalen' },
+  { key: 'eten', label: 'Eten' },
+];
+
+function formatDatum(datum: string) {
+  try {
+    return format(new Date(datum), 'd MMMM yyyy', { locale: nl });
+  } catch {
+    return datum;
+  }
 }
 
-const Blog = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const { data, error } = await supabase
-        .from('posts')
-        .select('*')
-        .eq('status', 'published')
-        .order('published_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching posts:', error);
-      } else {
-        setPosts(data || []);
-      }
-      setLoading(false);
-    };
-
-    fetchPosts();
-  }, []);
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Algarve Reisgidsen & Tips Blog",
-    "description": "Ontdek de beste lokale geheimen, reistips en insider informatie over de Algarve"
-  };
-
+function CategorieBadge({ categorie }: { categorie: ArtikelCategorie }) {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <PageHero
-          image={algarveLocalMarket}
-          imageAlt="Lokale markt in de Algarve"
-          title="Algarve Reisgidsen & Tips"
-          subtitle="Ontdek de beste lokale geheimen, reistips en insider informatie rechtstreeks van Algarve experts"
-        >
-          <div className="flex flex-wrap justify-center gap-3 text-sm mt-2">
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-              <Check className="w-4 h-4" /> Geschreven door locals
-            </span>
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-              <Check className="w-4 h-4" /> Wekelijks nieuwe content
-            </span>
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-              <Check className="w-4 h-4" /> Gratis toegang
-            </span>
-          </div>
-        </PageHero>
+    <span className="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">
+      {categorieLabels[categorie]}
+    </span>
+  );
+}
 
-        <div className="container mx-auto px-4 py-16">
-          {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <Card key={i} className="overflow-hidden">
-                  <Skeleton className="aspect-video w-full" />
-                  <CardHeader>
-                    <Skeleton className="h-6 w-20 mb-2" />
-                    <Skeleton className="h-8 w-full mb-2" />
-                    <Skeleton className="h-4 w-32" />
-                  </CardHeader>
-                  <CardContent>
-                    <Skeleton className="h-4 w-full mb-2" />
-                    <Skeleton className="h-4 w-full mb-2" />
-                    <Skeleton className="h-4 w-3/4" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : posts.length === 0 ? (
-            <div className="text-center py-20">
-              <div className="max-w-md mx-auto">
-                <div className="text-6xl mb-6">📝</div>
-                <h2 className="text-3xl font-bold mb-4">Binnenkort beschikbaar</h2>
-                <p className="text-muted-foreground mb-8">
-                  We werken hard aan geweldige content voor je. Check regelmatig terug voor nieuwe artikelen en insider tips over de Algarve!
-                </p>
-                <Link to="/bestemmingen">
-                  <Button size="lg" className="gap-2">
-                    Ontdek Bestemmingen <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post) => (
-                  <Link key={post.id} to={`/blog/${post.slug}`} className="group">
-                    <Card className="h-full hover:shadow-elegant transition-all duration-300 overflow-hidden border-0 shadow-soft">
-                      {post.featured_image ? (
-                        <div className="aspect-video overflow-hidden bg-muted">
-                          <img
-                            src={post.featured_image}
-                            alt={post.featured_image_alt || post.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        </div>
-                      ) : (
-                        <div className="aspect-video overflow-hidden bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 flex items-center justify-center">
-                          <BookOpen className="w-16 h-16 text-primary/40" />
-                        </div>
-                      )}
-                      <CardHeader>
-                        {post.category && (
-                          <Badge variant="secondary" className="w-fit mb-2">
-                            {post.category}
-                          </Badge>
-                        )}
-                        <CardTitle className="group-hover:text-primary transition-colors line-clamp-2">
-                          {post.title}
-                        </CardTitle>
-                        <CardDescription className="flex items-center gap-4 text-sm">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
-                            {format(new Date(post.published_at || post.created_at), 'dd MMM yyyy', { locale: nl })}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            5 min
-                          </span>
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-muted-foreground line-clamp-3 mb-4">
-                          {post.excerpt}
-                        </p>
-                        <span className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                          Lees artikel <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-
-              {/* CTA Section */}
-              <div className="mt-16 text-center">
-                <Card className="border-0 shadow-soft bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
-                  <CardContent className="p-12">
-                    <h3 className="text-3xl font-bold mb-4">Mis geen nieuwe tips</h3>
-                    <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                      Wil je op de hoogte blijven van de nieuwste insider tips en bestemmingsgidsen? Bookmark deze pagina en check regelmatig terug!
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4">
-                      <Link to="/bestemmingen">
-                        <Button size="lg" variant="default" className="gap-2">
-                          Bekijk Bestemmingen <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </Link>
-                      <Link to="/gidsen">
-                        <Button size="lg" variant="outline" className="gap-2">
-                          Reisgidsen <BookOpen className="w-4 h-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </>
-          )}
+function ArtikelKaart({ artikel }: { artikel: Artikel }) {
+  return (
+    <Link
+      to={`/blog/${artikel.slug}`}
+      className="group flex flex-col bg-card rounded-2xl border border-border overflow-hidden shadow-soft hover:shadow-warm transition-all hover:-translate-y-1"
+    >
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={artikel.afbeelding}
+          alt={artikel.titel}
+          className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute top-4 left-4">
+          <CategorieBadge categorie={artikel.categorie} />
         </div>
       </div>
-    </>
+      <div className="flex flex-col flex-1 p-6">
+        <h3 className="text-xl font-black text-foreground leading-snug group-hover:text-primary transition-colors">
+          {artikel.titel}
+        </h3>
+        <p className="mt-3 text-muted-foreground leading-relaxed flex-1">
+          {artikel.intro.length > 120
+            ? artikel.intro.slice(0, 117).trimEnd() + '…'
+            : artikel.intro}
+        </p>
+        <div className="mt-5 flex items-center justify-between text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5">
+            <Clock className="h-4 w-4" />
+            {artikel.leestijd}
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-primary">
+            Lees meer
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </div>
+      </div>
+    </Link>
   );
-};
+}
 
-export default Blog;
+export default function Blog() {
+  const [actief, setActief] = useState<Filter>('alle');
+
+  const uitgelicht = useMemo(
+    () => artikelen.find((a) => a.uitgelicht) ?? artikelen[0],
+    []
+  );
+
+  const zichtbaar = useMemo(() => {
+    const lijst =
+      actief === 'alle'
+        ? artikelen
+        : artikelen.filter((a) => a.categorie === actief);
+    return lijst;
+  }, [actief]);
+
+  return (
+    <main className="pt-16">
+      <Helmet>
+        <title>Verhalen & Gidsen — Algarve voor Bijna Niks</title>
+        <meta
+          name="description"
+          content="Eerlijke verhalen en praktische gidsen over de Algarve, geschreven door iemand die er echt is geweest. Van wilde stranden tot het perfecte prato do dia."
+        />
+        <link
+          rel="canonical"
+          href="https://algarvevoorbijnaniks.lovable.app/blog"
+        />
+        <meta property="og:title" content="Verhalen & Gidsen — Algarve voor Bijna Niks" />
+        <meta
+          property="og:description"
+          content="Eerlijke verhalen en praktische gidsen over de Algarve, geschreven door iemand die er echt is geweest."
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <PageHeader
+        image={heroImg}
+        eyebrow="Blog"
+        title="Verhalen & Gidsen"
+        intro={
+          <p>
+            Alles wat je weten wilt over de Algarve, geschreven door iemand die
+            er echt is geweest. Geen persreisjes, geen gesponsorde onzin — wel
+            wilde stranden, gouden uren en de beste lunch voor €7.
+          </p>
+        }
+      />
+
+      {/* Uitgelicht artikel */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="h-px flex-1 bg-border" />
+          <span className="text-sm font-bold uppercase tracking-widest text-primary">
+            Uitgelicht
+          </span>
+          <span className="h-px flex-1 bg-border" />
+        </div>
+
+        <Link
+          to={`/blog/${uitgelicht.slug}`}
+          className="group grid md:grid-cols-2 gap-0 bg-card rounded-3xl border border-border overflow-hidden shadow-soft hover:shadow-warm transition-all"
+        >
+          <div className="relative h-64 md:h-full min-h-[280px] overflow-hidden">
+            <img
+              src={uitgelicht.afbeelding}
+              alt={uitgelicht.titel}
+              className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          <div className="p-8 sm:p-10 flex flex-col justify-center">
+            <CategorieBadge categorie={uitgelicht.categorie} />
+            <h2 className="mt-4 text-2xl sm:text-4xl font-black text-foreground leading-tight group-hover:text-primary transition-colors">
+              {uitgelicht.titel}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+              {uitgelicht.ondertitel}
+            </p>
+            <div className="mt-6 flex items-center gap-5 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="h-4 w-4" />
+                {formatDatum(uitgelicht.datum)}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="h-4 w-4" />
+                {uitgelicht.leestijd}
+              </span>
+            </div>
+            <span className="mt-6 inline-flex items-center gap-2 font-bold text-primary">
+              Lees het hele artikel
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </div>
+        </Link>
+      </section>
+
+      {/* Filter tabs + grid */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+        <div className="flex flex-wrap gap-2 justify-center mb-10">
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => setActief(f.key)}
+              className={cn(
+                'px-5 py-2.5 rounded-full text-sm font-semibold transition-colors',
+                actief === f.key
+                  ? 'bg-primary text-primary-foreground shadow-warm'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/70 hover:text-foreground'
+              )}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {zichtbaar.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {zichtbaar.map((artikel) => (
+              <ArtikelKaart key={artikel.slug} artikel={artikel} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-muted-foreground py-16">
+            Nog geen artikelen in deze categorie. Kom snel terug!
+          </p>
+        )}
+      </section>
+    </main>
+  );
+}
