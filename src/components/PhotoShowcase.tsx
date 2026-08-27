@@ -80,7 +80,7 @@ export default function PhotoShowcase() {
             Ontdek de <span className="text-secondary">Schoonheid</span> van de Algarve
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Laat je inspireren door authentieke foto's van de mooiste plekken, van verborgen stranden tot luxe resorts
+            Laat je inspireren door authentieke foto's van de mooiste plekken, van verborgen stranden tot lokale markten
           </p>
         </div>
 
@@ -104,19 +104,13 @@ export default function PhotoShowcase() {
                   )}
                   loading="lazy"
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
+
                 {/* Category Badge */}
                 <Badge className="absolute top-4 left-4 bg-white/95 text-foreground hover:bg-white">
                   {photo.category}
-                </Badge>
-
-                {/* Rating Badge */}
-                <Badge className="absolute top-4 right-4 bg-primary/95 text-primary-foreground flex items-center gap-1">
-                  <Star className="w-3 h-3 fill-current" />
-                  4.8
                 </Badge>
 
                 {/* Content Overlay */}
@@ -125,15 +119,15 @@ export default function PhotoShowcase() {
                     <MapPin className="w-4 h-4" />
                     <span>{photo.location}</span>
                   </div>
-                  
+
                   <h3 className="text-white text-xl font-bold mb-2">
                     {photo.title}
                   </h3>
-                  
+
                   <p className={cn(
                     "text-white/80 text-sm transition-all duration-300",
-                    hoveredIndex === index 
-                      ? "opacity-100 translate-y-0" 
+                    hoveredIndex === index
+                      ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-4"
                   )}>
                     {photo.description}
@@ -147,11 +141,12 @@ export default function PhotoShowcase() {
         {/* CTA */}
         <div className="mt-12 text-center">
           <p className="text-muted-foreground mb-4">
-            Wil je meer zien? Ontdek onze complete fotogallerij met duizenden authentieke foto's
+            Wil je meer zien? Ontdek onze bestemmingenpagina met foto's van tientigen Algarve-locaties.
           </p>
           <a href="/bestemmingen">
-            <button className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl">
-              📸 Bekijk Alle Foto's
+            <button className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto">
+              <Camera className="w-5 h-5" />
+              Bekijk Alle Bestemmingen
             </button>
           </a>
         </div>

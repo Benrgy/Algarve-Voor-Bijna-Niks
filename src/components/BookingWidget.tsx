@@ -46,17 +46,17 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
             <MapPin className="w-5 h-5 text-primary" />
-            {destination} Deals
+            {destination} accommodaties
           </CardTitle>
-          <Badge variant="secondary" className="bg-primary text-primary-foreground">
-            -{discountPercent}% korting
+          <Badge variant="secondary" className="bg-secondary text-secondary-foreground">
+            Prijsvergelijking
           </Badge>
         </div>
         <p className="text-sm text-muted-foreground">
-          Vergelijk prijzen van alle top sites tegelijk
+          Vergelijk prijzen van boekingsplatforms in één zoekopdracht
         </p>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div>
@@ -99,16 +99,6 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
           </div>
         </div>
 
-        <div className="bg-muted/50 p-3 rounded-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Vanaf</span>
-            <div className="text-right">
-              <span className="text-lg font-bold text-primary">€{priceFrom}</span>
-              <span className="text-xs text-muted-foreground">/nacht</span>
-            </div>
-          </div>
-        </div>
-
         <Button
           onClick={handleSearch}
           disabled={!checkIn || !checkOut}
@@ -116,16 +106,12 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
           size="lg"
         >
           <ExternalLink className="w-4 h-4 mr-2" />
-          Vergelijk Alle Prijzen
+          Vergelijk Prijzen op Booking.com
         </Button>
 
         <div className="space-y-1">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Percent className="w-3 h-3" />
-            <span>Gratis annulering bij meeste accommodaties</span>
-          </div>
           <div className="text-xs text-muted-foreground text-center">
-            ℹ️ Commissie wordt betaald door boekingsplatforms, niet door jou
+            ℹ️ Wij ontvangen mogelijk een commissie via affiliate links. Jij betaalt hetzelfde of minder dan direct bij het platform.
           </div>
         </div>
       </CardContent>
