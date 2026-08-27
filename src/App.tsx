@@ -16,6 +16,9 @@ import Deals from "./pages/Deals";
 import Gidsen from "./pages/Gidsen";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Vliegen from "./pages/Vliegen";
+import Logeren from "./pages/Logeren";
+import Vervoer from "./pages/Vervoer";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDestinations from "./pages/AdminDestinations";
@@ -47,6 +50,9 @@ const App = () => (
               <Route path="/gidsen" element={<Gidsen />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/vliegen" element={<Vliegen />} />
+              <Route path="/logeren" element={<Logeren />} />
+              <Route path="/vervoer" element={<Vervoer />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/destinations" element={<AdminDestinations />} />
