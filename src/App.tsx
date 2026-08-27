@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { SEOWrapper } from "./components/SEOWrapper";
 import Navigation from "./components/Navigation";
-import EnhancedBreadcrumbs from "./components/EnhancedBreadcrumbs";
 import BackToTop from "./components/BackToTop";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
@@ -19,6 +18,9 @@ import BlogPost from "./pages/BlogPost";
 import Vliegen from "./pages/Vliegen";
 import Logeren from "./pages/Logeren";
 import Vervoer from "./pages/Vervoer";
+import Eten from "./pages/Eten";
+import Tips from "./pages/Tips";
+import N125 from "./pages/N125";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDestinations from "./pages/AdminDestinations";
@@ -41,18 +43,20 @@ const App = () => (
         <BrowserRouter basename={BASENAME}>
           <SEOWrapper>
             <Navigation />
-            <EnhancedBreadcrumbs />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/bestemmingen" element={<Bestemmingen />} />
               <Route path="/bestemmingen/:slug" element={<Destination />} />
+              <Route path="/vliegen" element={<Vliegen />} />
+              <Route path="/logeren" element={<Logeren />} />
+              <Route path="/vervoer" element={<Vervoer />} />
+              <Route path="/eten" element={<Eten />} />
+              <Route path="/tips" element={<Tips />} />
+              <Route path="/n125" element={<N125 />} />
               <Route path="/deals" element={<Deals />} />
               <Route path="/gidsen" element={<Gidsen />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/vliegen" element={<Vliegen />} />
-              <Route path="/logeren" element={<Logeren />} />
-              <Route path="/vervoer" element={<Vervoer />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/destinations" element={<AdminDestinations />} />

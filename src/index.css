@@ -8,50 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Algarve Design System - Warm Mediterranean Colors */
-    --background: 45 100% 99%;
-    --foreground: 210 15% 15%;
+    /* Algarve Design System - Warm Portuguese Palette
+       Terracotta #C4622D, White, Portuguese Blue #1B4F72 */
+    --background: 0 0% 100%;
+    --foreground: 205 30% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 15% 15%;
+    --card-foreground: 205 30% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 15% 15%;
+    --popover-foreground: 205 30% 18%;
 
-    /* Algarve Sun - Golden Orange */
-    --primary: 35 85% 55%;
+    /* Terracotta #C4622D */
+    --primary: 21 63% 47%;
     --primary-foreground: 0 0% 100%;
 
-    /* Ocean Blue */
-    --secondary: 205 85% 65%;
+    /* Portuguese Blue #1B4F72 */
+    --secondary: 204 62% 28%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Sand Beige */
-    --muted: 45 25% 95%;
-    --muted-foreground: 210 15% 45%;
+    /* Warm Sand */
+    --muted: 30 30% 96%;
+    --muted-foreground: 205 15% 40%;
 
-    /* Warm Accent - Coral Pink */
-    --accent: 15 75% 65%;
+    /* Warm Orange Accent */
+    --accent: 28 82% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 20% 90%;
-    --input: 45 20% 95%;
-    --ring: 35 85% 55%;
+    --border: 30 20% 90%;
+    --input: 30 20% 94%;
+    --ring: 21 63% 47%;
 
     /* Enhanced Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(35 85% 55%), hsl(25 75% 70%));
-    --gradient-ocean: linear-gradient(180deg, hsl(205 85% 65%), hsl(215 80% 70%));
-    --gradient-sunset: linear-gradient(90deg, hsl(35 85% 55%), hsl(15 75% 65%));
-    --gradient-coral: linear-gradient(135deg, hsl(15 75% 65%), hsl(25 70% 70%));
-    --gradient-warm: linear-gradient(135deg, hsl(45 85% 70%), hsl(35 80% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(21 63% 47%), hsl(28 82% 58%));
+    --gradient-ocean: linear-gradient(180deg, hsl(204 62% 28%), hsl(204 55% 38%));
+    --gradient-sunset: linear-gradient(90deg, hsl(21 63% 47%), hsl(28 82% 60%));
+    --gradient-coral: linear-gradient(135deg, hsl(21 63% 47%), hsl(28 78% 62%));
+    --gradient-warm: linear-gradient(135deg, hsl(28 82% 62%), hsl(21 63% 50%));
 
     /* Shadows */
-    --shadow-warm: 0 10px 30px -10px hsl(35 85% 55% / 0.3);
-    --shadow-soft: 0 4px 20px -4px hsl(210 15% 15% / 0.1);
-    --shadow-glow: 0 0 40px hsl(35 85% 55% / 0.2);
+    --shadow-warm: 0 10px 30px -10px hsl(21 63% 47% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(205 30% 18% / 0.1);
+    --shadow-glow: 0 0 40px hsl(21 63% 47% / 0.2);
 
     /* Advanced Animations & Effects */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
