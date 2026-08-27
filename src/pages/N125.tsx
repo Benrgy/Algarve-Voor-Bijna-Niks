@@ -1,3 +1,4 @@
+import SEO from '@/components/site/SEO';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-coastal-road.jpg';
@@ -88,6 +89,11 @@ const stops = [
 export default function N125() {
   return (
     <main className="pt-16">
+      <SEO
+        title="De N125: Mijn persoonlijke road trip door de Algarve | Algarve voor Bijna Niks"
+        description="10 dagen lang de N125 van Tavira tot Sagres gereden. Dit is mijn eerlijke verslag: de hoogtepunten, de teleurstellingen en alles wat je echt moet weten."
+        url="/n125"
+      />
       <PageHeader
         image={heroImg}
         eyebrow="Het reisverhaal"

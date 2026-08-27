@@ -1,3 +1,4 @@
+import SEO from '@/components/site/SEO';
 import PageHeader from '@/components/site/PageHeader';
 import { Section } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-sunset-beach.jpg';
@@ -85,6 +86,11 @@ const gems = [
 export default function Bestemmingen() {
   return (
     <main className="pt-16">
+      <SEO
+        title="Bestemmingen Algarve – Van Lagos tot de Goldene Eilanden | Algarve voor Bijna Niks"
+        description="De mooiste plekken in de Algarve, inclusief 5 verborgen parels die de meeste toeristen nooit vinden. Oost, midden en west vergeleken."
+        url="/bestemmingen"
+      />
       <PageHeader
         image={heroImg}
         eyebrow="Bestemmingen"

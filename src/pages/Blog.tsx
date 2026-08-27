@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { nl } from "date-fns/locale";
 import { Skeleton } from "@/components/ui/skeleton";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/site/SEO";
 import algarveLocalMarket from "@/assets/algarve-local-market.jpg";
 
 interface Post {
@@ -55,6 +56,11 @@ const Blog = () => {
 
   return (
     <>
+      <SEO
+        title="Algarve Reisgidsen & Tips - Lokale Insider Informatie | Algarve voor Bijna Niks"
+        description="Ontdek de beste lokale geheimen, reistips en insider informatie over de Algarve. Geschreven door locals en reisexperts."
+        url="/blog"
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

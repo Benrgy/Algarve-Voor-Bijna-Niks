@@ -1,3 +1,4 @@
+import SEO from '@/components/site/SEO';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-faro-airport.jpg';
@@ -18,6 +19,11 @@ const priceGuide = [
 export default function Vliegen() {
   return (
     <main className="pt-16">
+      <SEO
+        title="Vliegen naar de Algarve – Goedkope vluchten vanuit Nederland en België | Algarve voor Bijna Niks"
+        description="De slimste manier om naar Faro te vliegen. Wanneer boeken, welke maatschappij, wat kost het echt? Eerlijke gids voor budgetvliegers."
+        url="/vliegen"
+      />
       <PageHeader
         image={heroImg}
         eyebrow="Vliegen"

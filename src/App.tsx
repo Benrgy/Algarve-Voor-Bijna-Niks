@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { SEOWrapper } from "./components/SEOWrapper";
 import Navigation from "./components/Navigation";
 import BackToTop from "./components/BackToTop";
 import Footer from "./components/Footer";
@@ -41,7 +40,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter basename={BASENAME}>
-          <SEOWrapper>
+          <>
             <Navigation />
             <Routes>
               <Route path="/" element={<Index />} />
@@ -69,7 +68,7 @@ const App = () => (
             </Routes>
             <Footer />
             <BackToTop />
-          </SEOWrapper>
+          </>
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>

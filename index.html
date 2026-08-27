@@ -3,26 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fallback title. Per-page title and meta description are set at runtime by the SEO component (react-helmet-async).
+         The meta description is intentionally NOT hardcoded here: react-helmet-async replaces the title element but would
+         otherwise leave a duplicate description meta tag alongside the per-page one. -->
     <title>Algarve voor Bijna Niks — Reis de Algarve zoals de locals</title>
-    <meta name="description" content="Reis de Algarve zoals de locals. Geen massa-toerisme, geen all-inclusive — wél échte ervaringen voor een fractie van de prijs. Vanaf €40 per dag." />
     <meta name="author" content="Algarve voor Bijna Niks" />
-    <meta name="keywords" content="goedkope algarve vakanties, portugal reizen, last minute algarve, budget vakantie algarve, strand portugal" />
-    <link rel="canonical" href="https://benrgy.github.io/Algarve-Voor-Bijna-Niks/" />
+    <meta name="keywords" content="goedkope algarve vakanties, portugal reizen, algarve reisgids, budget vakantie algarve, backpacken algarve, kamperen algarve" />
     <link rel="icon" href="/favicon.png" type="image/png" />
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Algarve voor Bijna Niks — Reis zoals de locals" />
-    <meta property="og:description" content="Geen massa-toerisme, geen all-inclusive. Ontdek hoe je de Algarve authentiek beleeft voor bijna niks — vanaf €40 per dag." />
+    <!-- Site-wide Open Graph constants (page-specific og:title/description/url/image are set by the SEO component) -->
+    <meta property="og:site_name" content="Algarve voor Bijna Niks" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://benrgy.github.io/Algarve-Voor-Bijna-Niks/" />
-    <meta property="og:image" content="https://benrgy.github.io/Algarve-Voor-Bijna-Niks/og-image.jpg" />
     <meta property="og:locale" content="nl_NL" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card type (page-specific title/description/image are set by the SEO component) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Algarve voor Bijna Niks — Reis zoals de locals" />
-    <meta name="twitter:description" content="Authentiek reizen door de Algarve voor bijna niks. Vervoer, logeren, eten en de N125-route." />
-    <meta name="twitter:image" content="https://benrgy.github.io/Algarve-Voor-Bijna-Niks/og-image.jpg" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="robots" content="index, follow" />
@@ -36,8 +31,8 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Algarve voor Bijna Niks",
-      "url": "https://benrgy.github.io/Algarve-Voor-Bijna-Niks/",
-      "description": "Ontdek de beste deals voor goedkope Algarve vakanties. Van gezinsstranden tot luxe resorts - boek nu met tot 70% korting.",
+      "url": "https://algarvevoorbijnaniks.lovable.app",
+      "description": "Eerlijke reisgids voor budgetreizigers in de Algarve",
       "inLanguage": "nl",
       "publisher": {
         "@type": "Organization",
@@ -50,17 +45,17 @@
   <body>
     <div style="display: none;" id="seo-fallback">
       <h1>Algarve voor Bijna Niks</h1>
-      <p>Ontdek de beste deals voor goedkope Algarve vakanties. Van gezinsstranden tot luxe resorts - boek nu met tot 70% korting. Al 10.000+ tevreden reizigers!</p>
-      <h2>Hoe vind je goedkope Algarve vakanties?</h2>
-      <p>Bespaar tot 70% op jouw Algarve vakantie. Ontdek 9 manieren om Portugal's zonnigste kust voor bijna niks te bezoeken.</p>
+      <p>Eerlijke reisgids voor budgetreizigers in de Algarve. Reis zoals de locals — zonder massa-toerisme en zonder een kapitaal uit te geven.</p>
+      <h2>Hoe reis je goedkoop door de Algarve?</h2>
+      <p>Van kamperen en quintas tot de prato do dia van €7 en de trein langs de kust: ontdek hoe je de echte Algarve beleeft voor bijna niks.</p>
       <h2>Bestemmingen in de Algarve</h2>
       <ul>
         <li>Faro - Perfect voor cultuur en budget</li>
-        <li>Albufeira - Populaire strandbestemming</li>
+        <li>Tavira - Authentiek en rustig aan de oostkust</li>
         <li>Lagos - Prachtige rotsformaties</li>
-        <li>Portimão - Luxe voor minder geld</li>
+        <li>Sagres - Wilde westkust en surf</li>
       </ul>
-      <a href="https://benrgy.github.io/Algarve-Voor-Bijna-Niks/">Bekijk alle goedkope Algarve vakanties</a>
+      <a href="https://algarvevoorbijnaniks.lovable.app/">Bekijk de eerlijke Algarve reisgids</a>
     </div>
     <div id="root"></div>
     <script type="text/javascript">

@@ -1,3 +1,4 @@
+import SEO from '@/components/site/SEO';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-local-market.jpg';
@@ -38,6 +39,11 @@ const dishes = [
 export default function Eten() {
   return (
     <main className="pt-16">
+      <SEO
+        title="Eten in de Algarve – Lekker en goedkoop | Algarve voor Bijna Niks"
+        description="Prato do dia voor €7, verse vis op de markt, Pingo Doce picknick. Zo eet je in de Algarve zonder je budget te verpesten."
+        url="/eten"
+      />
       <PageHeader
         image={heroImg}
         eyebrow="Eten & drinken"
