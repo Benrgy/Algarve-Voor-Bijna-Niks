@@ -12,12 +12,12 @@ interface CTASectionProps {
 }
 
 export default function CTASection({
-  title = "Klaar om je Droomvakantie te Boeken?",
-  description = "Start vandaag met plannen en bespaar honderden euro's met onze lokale insider tips",
-  primaryButtonText = "🏖️ Ontdek Bestemmingen",
+  title = "Klaar om de Algarve te Verkennen?",
+  description = "Ontdek lokale tips, eerlijke prijsvergelijkingen en praktische reisinformatie voor jouw volgende trip.",
+  primaryButtonText = "Ontdek Bestemmingen",
   primaryButtonLink = "/bestemmingen",
-  secondaryButtonText = "💰 Bekijk Deals",
-  secondaryButtonLink = "/deals",
+  secondaryButtonText = "Bekijk Gidsen",
+  secondaryButtonLink = "/gidsen",
   variant = 'default',
 }: CTASectionProps) {
   const gradients = {
@@ -58,15 +58,8 @@ export default function CTASection({
             </button>
           </Link>
         </div>
-
-        {/* Trust Line */}
-        <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-          <span className="flex items-center gap-1">✅ Gratis Annulering</span>
-          <span className="flex items-center gap-1">✅ Beste Prijsgarantie</span>
-          <span className="flex items-center gap-1">✅ 24/7 Support</span>
-          <span className="flex items-center gap-1">✅ Lokale Expertise</span>
-        </div>
       </div>
     </section>
   );
 }
+
