@@ -6,7 +6,6 @@ import {
   Clock, 
   Shield, 
   Sparkles,
-  TrendingUp,
   Heart,
   Camera,
   Award
@@ -23,61 +22,55 @@ const benefits: Benefit[] = [
   {
     icon: <MapPin className="w-8 h-8" />,
     title: "Lokale Insider Kennis",
-    description: "Ontdek verborgen pareltjes en authentieke plekken die alleen locals kennen. Vermijd toeristenvallen en ervaar de echte Algarve.",
+    description: "Ontdek authentieke plekken en lokale gewoontes die je niet in een standaard reisgids vindt. Gebaseerd op eigen ervaring in de Algarve.",
     color: "text-primary",
   },
   {
     icon: <DollarSign className="w-8 h-8" />,
-    title: "Maximale Besparing",
-    description: "Bespaar gemiddeld €500+ op je vakantie met onze budget tips, insider deals en timing strategieën. Meer genieten, minder betalen.",
+    title: "Budgetbewust Reizen",
+    description: "Praktische tips om kosten laag te houden: goedkope vervoersopties, lokale menu's en betaalbare accommodaties zonder comfort in te leveren.",
     color: "text-green-600",
   },
   {
     icon: <Users className="w-8 h-8" />,
     title: "Expert Begeleiding",
-    description: "Persoonlijk advies van lokale experts met jarenlange ervaring. Krijg antwoorden op al je vragen van mensen die de Algarve kennen.",
+    description: "Advies van mensen die de Algarve daadwerkelijk kennen. Geen anonieme tips, maar inzichten van locals en ervaren reizigers.",
     color: "text-secondary",
   },
   {
     icon: <Clock className="w-8 h-8" />,
-    title: "Perfect Getimede Tips",
-    description: "Weet precies wanneer je waar moet zijn: beste tijden, seizoenen en momenten voor de ultieme ervaring zonder drukte.",
+    title: "Seizoensgebonden Tips",
+    description: "Informatie over het beste reismoment, rustige periodes en seizoensgebonden evenementen zodat je de Algarve op jouw manier beleeft.",
     color: "text-accent",
   },
   {
     icon: <Shield className="w-8 h-8" />,
     title: "Betrouwbare Informatie",
-    description: "Alle tips en aanbevelingen zijn persoonlijk geverifieerd. Geen gesponsorde content, alleen échte ervaringen en eerlijke adviezen.",
+    description: "We delen alleen tips die we zelf hebben gecontroleerd of die van betrouwbare bronnen afkomstig zijn. Geen loze beloftes.",
     color: "text-blue-600",
   },
   {
     icon: <Sparkles className="w-8 h-8" />,
     title: "Hidden Gems & Geheimen",
-    description: "Exclusieve toegang tot geheime locaties, verborgen stranden en authentieke restaurants waar toeristen niet komen.",
+    description: "Tips voor minder bekende stranden, dorpjes en restaurants waar je niet meteen als toerist wordt herkend.",
     color: "text-purple-600",
-  },
-  {
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: "Actuele Content",
-    description: "Dagelijks bijgewerkte informatie over prijzen, openingstijden en seizoensgebonden tips. Altijd de meest recente insights.",
-    color: "text-orange-600",
   },
   {
     icon: <Heart className="w-8 h-8" />,
     title: "Authentieke Ervaringen",
-    description: "Beleef de Algarve zoals locals dat doen. Van traditionele markten tot familie restaurants - echte cultuur, geen toeristen traps.",
+    description: "Beleef de Algarve zoals locals dat doen. Van traditionele markten tot familie restaurants: echte cultuur, geen toeristenmassa.",
     color: "text-red-600",
   },
   {
     icon: <Camera className="w-8 h-8" />,
     title: "Visuele Inspiratie",
-    description: "Duizenden authentieke foto's van elke bestemming. Zie exact wat je kunt verwachten en laat je inspireren voor je reis.",
+    description: "Foto's en beelden van bestemmingen om je een realistisch beeld te geven van wat je kunt verwachten tijdens je reis.",
     color: "text-pink-600",
   },
   {
     icon: <Award className="w-8 h-8" />,
-    title: "Premium Kwaliteit",
-    description: "Hoogwaardige reisgidsen met ongekend detail. Van transport tot accommodatie, van eten tot activiteiten - alles wat je nodig hebt.",
+    title: "Gedegen Reisgidsen",
+    description: "Uitgebreide gidsen met praktische informatie over vervoer, accommodatie, eten en activiteiten in de Algarve.",
     color: "text-yellow-600",
   },
 ];
@@ -93,10 +86,10 @@ export default function BenefitsSection() {
             <span className="text-sm font-semibold text-accent">Waarom Algarve voor Bijna Niks</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Jouw <span className="text-primary">Algarve Expert</span> in Nederland
+            Jouw <span className="text-primary">Algarve Gids</span> in Nederland
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We combineren lokale expertise met Nederlandse service voor de perfecte Algarve ervaring
+            Lokale kennis, eerlijke prijstips en praktische informatie voor een ontspannen Algarve reis
           </p>
         </div>
 
@@ -130,20 +123,20 @@ export default function BenefitsSection() {
         {/* CTA Section */}
         <div className="mt-16 text-center bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 rounded-2xl p-12 border border-primary/20">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Klaar voor je Perfecte Algarve Avontuur?
+            Klaar om de Algarve te Verkennen?
           </h3>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Start vandaag met plannen en ontdek waarom duizenden Nederlanders hun Algarve reis bij ons beginnen
+            Start met plannen en ontdek bestemmingen, budgettips en lokale adressen voor jouw reis.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/bestemmingen">
               <button className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl">
-                🏖️ Verken Bestemmingen
+                Verken Bestemmingen
               </button>
             </a>
-            <a href="/deals">
+            <a href="/gidsen">
               <button className="bg-secondary text-secondary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl">
-                💰 Bekijk Beste Deals
+                Bekijk Gidsen
               </button>
             </a>
           </div>
@@ -152,3 +145,4 @@ export default function BenefitsSection() {
     </section>
   );
 }
+

@@ -100,7 +100,7 @@ const Deals = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-secondary font-bold">🌙</span>
-                    <span>Reis buiten de zomermaanden voor 50-70% korting</span>
+                    <span>Reis in het voor- of naseizoen voor vaak aantrekkelijkere prijzen</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">🏠</span>
