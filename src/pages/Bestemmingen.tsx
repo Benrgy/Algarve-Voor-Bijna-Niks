@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { collectionPageSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-sunset-beach.jpg';
@@ -90,6 +91,17 @@ export default function Bestemmingen() {
         title="Bestemmingen Algarve – Van Lagos tot de Goldene Eilanden | Algarve voor Bijna Niks"
         description="De mooiste plekken in de Algarve, inclusief 5 verborgen parels die de meeste toeristen nooit vinden. Oost, midden en west vergeleken."
         url="/bestemmingen"
+        jsonLd={[
+          collectionPageSchema({
+            name: 'Bestemmingen in de Algarve',
+            description: 'Overzicht van plaatsen en regio\u2019s in de Algarve met praktische, budgetvriendelijke informatie.',
+            url: '/bestemmingen',
+          }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Bestemmingen', url: '/bestemmingen' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}

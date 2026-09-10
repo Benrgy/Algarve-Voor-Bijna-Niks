@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-villa-pool.jpg';
@@ -101,6 +102,13 @@ export default function Logeren() {
         title="Logeren in de Algarve – Van camping tot quinta | Algarve voor Bijna Niks"
         description="Waar slaap je budgetvriendelijk in de Algarve? Vergelijking van campings, hostels, quintas en Airbnb. Inclusief onze favoriete picks."
         url="/logeren"
+        jsonLd={[
+          articleSchema({ headline: 'Logeren in de Algarve', url: '/logeren', section: 'Accommodatie' }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Logeren in de Algarve', url: '/logeren' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}

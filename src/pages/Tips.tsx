@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-family-beach.jpg';
@@ -70,6 +71,13 @@ export default function Tips() {
         title="Insider tips voor de Algarve – Wat de reisgidsen niet vertellen | Algarve voor Bijna Niks"
         description="De beste insider tips voor een onvergetelijke Algarve vakantie. Van zwijnen in de serra tot gratis parkeren bij de mooiste stranden."
         url="/tips"
+        jsonLd={[
+          articleSchema({ headline: 'Insider tips voor de Algarve', url: '/tips', section: 'Reistips' }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Insider tips voor de Algarve', url: '/tips' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}
