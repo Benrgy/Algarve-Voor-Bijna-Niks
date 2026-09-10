@@ -75,6 +75,19 @@ const Index = () => {
         title="Algarve voor Bijna Niks – Eerlijke reisgids voor budgetreizigers"
         description="Ontdek de echte Algarve zonder massa-toerisme en zonder kapitaal uit te geven. Onze eerlijke gids voor kampeerders, backpackers en slimme reizigers."
         url="/"
+        jsonLd={[
+          organizationSchema(),
+          websiteSchema(),
+          itemListSchema({
+            name: 'Regio\u2019s in de Algarve',
+            items: [
+              { name: 'De Oost-Algarve', url: '/bestemmingen' },
+              { name: 'De N125-route', url: '/n125' },
+              { name: 'De West-Algarve', url: '/bestemmingen' },
+              { name: 'Het binnenland', url: '/bestemmingen' },
+            ],
+          }),
+        ]}
       />
       {/* Hero */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
