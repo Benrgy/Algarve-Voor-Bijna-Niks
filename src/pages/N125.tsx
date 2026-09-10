@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-coastal-road.jpg';
@@ -93,6 +94,13 @@ export default function N125() {
         title="De N125: Mijn persoonlijke road trip door de Algarve | Algarve voor Bijna Niks"
         description="10 dagen lang de N125 van Tavira tot Sagres gereden. Dit is mijn eerlijke verslag: de hoogtepunten, de teleurstellingen en alles wat je echt moet weten."
         url="/n125"
+        jsonLd={[
+          articleSchema({ headline: 'De N125-route door de Algarve', url: '/n125', section: 'Routes' }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'De N125-route door de Algarve', url: '/n125' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}

@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard, Callout } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-local-market.jpg';
@@ -43,6 +44,13 @@ export default function Eten() {
         title="Eten in de Algarve – Lekker en goedkoop | Algarve voor Bijna Niks"
         description="Prato do dia voor €7, verse vis op de markt, Pingo Doce picknick. Zo eet je in de Algarve zonder je budget te verpesten."
         url="/eten"
+        jsonLd={[
+          articleSchema({ headline: 'Eten in de Algarve', url: '/eten', section: 'Eten en drinken' }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Eten in de Algarve', url: '/eten' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}

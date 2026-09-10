@@ -10,6 +10,7 @@ import { nl } from "date-fns/locale";
 import { Skeleton } from "@/components/ui/skeleton";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/site/SEO";
+import { breadcrumbSchema, SITE_URL } from "@/lib/structuredData";
 import algarveLocalMarket from "@/assets/algarve-local-market.jpg";
 
 interface Post {
@@ -50,8 +51,18 @@ const Blog = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Algarve Reisgidsen & Tips Blog",
-    "description": "Ontdek de beste lokale geheimen, reistips en insider informatie over de Algarve"
+    "@id": `${SITE_URL}/blog#blog`,
+    name: "Algarve Reisgidsen & Tips Blog",
+    description: "Ontdek de beste lokale geheimen, reistips en insider informatie over de Algarve",
+    url: `${SITE_URL}/blog`,
+    inLanguage: "nl-NL",
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.published_at || post.created_at,
+    })),
   };
 
   return (
@@ -60,10 +71,13 @@ const Blog = () => {
         title="Algarve Reisgidsen & Tips - Lokale Insider Informatie | Algarve voor Bijna Niks"
         description="Ontdek de beste lokale geheimen, reistips en insider informatie over de Algarve. Geschreven door locals en reisexperts."
         url="/blog"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        jsonLd={[
+          structuredData,
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Blog", url: "/blog" },
+          ]),
+        ]}
       />
       
       <div className="min-h-screen bg-background">

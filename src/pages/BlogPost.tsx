@@ -8,7 +8,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, BookOpen } from "lucide-react";
 import { format } from "date-fns";
 import { nl } from "date-fns/locale";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/site/SEO";
+import { articleSchema, breadcrumbSchema } from "@/lib/structuredData";
 import { useToast } from "@/hooks/use-toast";
 
 interface Post {
@@ -136,10 +137,28 @@ const BlogPost = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <SEO
+        title={title}
+        description={description}
+        url={`/blog/${post.slug}`}
+        image={post.featured_image}
+        jsonLd={[
+          articleSchema({
+            headline: post.title,
+            description: post.excerpt || description,
+            url: `/blog/${post.slug}`,
+            image: post.featured_image,
+            datePublished: post.published_at || post.created_at,
+            dateModified: post.updated_at || post.published_at || post.created_at,
+            section: post.category,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Blog", url: "/blog" },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
       
       <div className="min-h-screen bg-background">
         <article className="container mx-auto px-4 max-w-4xl pt-24 pb-16">

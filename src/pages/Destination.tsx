@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/site/SEO";
+import { touristDestinationSchema, breadcrumbSchema, faqSchema } from "@/lib/structuredData";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -153,12 +154,42 @@ export default function Destination() {
     );
   }
 
+  const destinationFaq = [
+    destination.best_time_to_visit && {
+      question: `Wat is de beste tijd om ${destination.name} te bezoeken?`,
+      answer: destination.best_time_to_visit,
+    },
+    destination.budget_tips && {
+      question: `Hoe bezoek je ${destination.name} op een budget?`,
+      answer: destination.budget_tips,
+    },
+    destination.transportation && {
+      question: `Hoe kom je in ${destination.name}?`,
+      answer: destination.transportation,
+    },
+  ].filter(Boolean) as { question: string; answer: string }[];
+
   return (
     <>
-      <Helmet>
-        <title>{destination.title}</title>
-        <meta name="description" content={destination.meta_description} />
-      </Helmet>
+      <SEO
+        title={destination.title}
+        description={destination.meta_description}
+        url={`/bestemmingen/${destination.slug}`}
+        jsonLd={[
+          touristDestinationSchema({
+            name: destination.name,
+            description: destination.meta_description || destination.short_description,
+            url: `/bestemmingen/${destination.slug}`,
+            region: destination.region,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Bestemmingen", url: "/bestemmingen" },
+            { name: destination.name, url: `/bestemmingen/${destination.slug}` },
+          ]),
+          ...(destinationFaq.length ? [faqSchema(destinationFaq)] : []),
+        ]}
+      />
 
       {/* Quick Action Bar */}
       <QuickActionBar destinationName={destination.name} />

@@ -13,13 +13,15 @@ interface SEOProps {
   url?: string;
   /** Social sharing image (optional, falls back to the site OG image) */
   image?: string;
+  /** JSON-LD structured data object (or list of objects) for this page */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 /**
  * Reusable SEO component. Sets the document title, meta description,
  * canonical URL, Open Graph and Twitter Card tags via react-helmet-async.
  */
-export default function SEO({ title, description, url, image }: SEOProps) {
+export default function SEO({ title, description, url, image, jsonLd }: SEOProps) {
   const canonical = url
     ? url.startsWith('http')
       ? url
@@ -47,6 +49,14 @@ export default function SEO({ title, description, url, image }: SEOProps) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+
+      {/* JSON-LD structured data */}
+      {jsonLd &&
+        (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
     </Helmet>
   );
 }

@@ -1,4 +1,5 @@
 import SEO from '@/components/site/SEO';
+import { articleSchema, breadcrumbSchema } from '@/lib/structuredData';
 import PageHeader from '@/components/site/PageHeader';
 import { Section, InfoCard, Callout, PriceRow } from '@/components/site/Section';
 import heroImg from '@/assets/algarve-coastal-road.jpg';
@@ -40,6 +41,13 @@ export default function Vervoer() {
         title="Vervoer in de Algarve – Auto, bus, trein of fiets | Algarve voor Bijna Niks"
         description="Hoe kom je van A naar B in de Algarve? Alles over huurauto's, openbaar vervoer, Uber en fietsen. Eerlijke prijzen en praktische tips."
         url="/vervoer"
+        jsonLd={[
+          articleSchema({ headline: 'Vervoer in de Algarve', url: '/vervoer', section: 'Vervoer' }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Vervoer in de Algarve', url: '/vervoer' },
+          ]),
+        ]}
       />
       <PageHeader
         image={heroImg}
