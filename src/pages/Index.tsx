@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Plane, Tent, Bus, ArrowRight } from 'lucide-react';
 import SEO from '@/components/site/SEO';
-import { organizationSchema, websiteSchema, itemListSchema } from '@/lib/structuredData';
+import { organizationSchema, itemListSchema } from '@/lib/structuredData';
 import algarveHeroBeach from '@/assets/algarve-hero-beach.jpg';
 import coastalRoad from '@/assets/destinations/tavira-hero.jpg';
 import n125Road from '@/assets/algarve-coastal-road.jpg';
@@ -78,7 +78,6 @@ const Index = () => {
         url="/"
         jsonLd={[
           organizationSchema(),
-          websiteSchema(),
           itemListSchema({
             name: 'Regio\u2019s in de Algarve',
             items: [
