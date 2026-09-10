@@ -1,4 +1,6 @@
 import React from 'react';
+import SEO from '@/components/site/SEO';
+import { collectionPageSchema, breadcrumbSchema } from '@/lib/structuredData';
 import BookingWidget from '@/components/BookingWidget';
 import CostCalculator from '@/components/CostCalculator';
 import LocalExperiences from '@/components/LocalExperiences';
@@ -10,18 +12,23 @@ import PageHero from '@/components/PageHero';
 import algarveBeachResort from '@/assets/algarve-beach-resort.jpg';
 
 const Deals = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Algarve Deals en Prijzen",
-    "description": "Vind de beste deals en goedkoopste prijzen voor je Algarve vakantie."
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      <SEO
+        title="Algarve prijzen en aanbiedingen vergelijken | Algarve voor Bijna Niks"
+        description="Vergelijk prijzen voor vluchten, verblijf en vervoer in de Algarve en zie wat een reis realistisch kost."
+        url="/deals"
+        jsonLd={[
+          collectionPageSchema({
+            name: 'Algarve prijzen en aanbiedingen',
+            description: 'Prijzen vergelijken voor vluchten, verblijf en vervoer in de Algarve.',
+            url: '/deals',
+          }),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Deals', url: '/deals' },
+          ]),
+        ]}
       />
       
       <div className="min-h-screen bg-background">

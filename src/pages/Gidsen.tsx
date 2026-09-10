@@ -1,4 +1,7 @@
 import React from 'react';
+import SEO from '@/components/site/SEO';
+import { faqData } from '@/components/AlgarveFAQ';
+import { faqSchema, breadcrumbSchema, collectionPageSchema } from '@/lib/structuredData';
 import TravelGuides from '@/components/TravelGuides';
 import AlgarveFAQ from '@/components/AlgarveFAQ';
 import AlgarveInsights from '@/components/AlgarveInsights';
@@ -11,18 +14,24 @@ import PageHero from '@/components/PageHero';
 import algarveCoastalRoad from '@/assets/algarve-coastal-road.jpg';
 
 const Gidsen = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "TravelGuide",
-    "name": "Algarve Reisgidsen",
-    "description": "Uitgebreide reisgidsen en insider tips voor de perfecte Algarve vakantie."
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      <SEO
+        title="Algarve Reisgidsen – Insider tips van locals | Algarve voor Bijna Niks"
+        description="Praktische Algarve reisgidsen over stranden, eten, vervoer en budget. Met veelgestelde vragen en eerlijke tips uit eigen ervaring."
+        url="/gidsen"
+        jsonLd={[
+          collectionPageSchema({
+            name: 'Algarve Reisgidsen',
+            description: 'Praktische reisgidsen en insider tips voor de Algarve.',
+            url: '/gidsen',
+          }),
+          faqSchema(faqData.map(({ question, answer }) => ({ question, answer }))),
+          breadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Gidsen', url: '/gidsen' },
+          ]),
+        ]}
       />
       
       <div className="min-h-screen bg-background">
