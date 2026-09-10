@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-const faqData = [
+export const faqData = [
   {
     id: "faq-1",
     question: "Wat zijn de goedkoopste maanden voor een Algarve vakantie?",
