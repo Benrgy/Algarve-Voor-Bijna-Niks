@@ -21,7 +21,7 @@ interface SEOProps {
  * Reusable SEO component. Sets the document title, meta description,
  * canonical URL, Open Graph and Twitter Card tags via react-helmet-async.
  */
-export default function SEO({ title, description, url, image }: SEOProps) {
+export default function SEO({ title, description, url, image, jsonLd }: SEOProps) {
   const canonical = url
     ? url.startsWith('http')
       ? url
