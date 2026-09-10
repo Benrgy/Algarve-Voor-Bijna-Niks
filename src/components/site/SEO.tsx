@@ -13,6 +13,8 @@ interface SEOProps {
   url?: string;
   /** Social sharing image (optional, falls back to the site OG image) */
   image?: string;
+  /** JSON-LD structured data object (or list of objects) for this page */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 /**
